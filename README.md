@@ -2,7 +2,7 @@
 
 <h1 align="center">
 
-    <img alt="NextLevelWeek" title="#NextLevelWeek" src="https://raw.githubusercontent.com/shyoutarou/NLW2_Mobile/master/server/src/assets/imagens/nlw2.svg" width="180px" />
+    <img alt="NextLevelWeek" title="#NextLevelWeek" src="https://raw.githubusercontent.com/shyoutarou/NLW2_Server/364a49187cb38f9d064718cc70c1f049d2719751/server/src/assets/imagens/nlw2.svg" width="180px" />
 </h1>
 
 public/apresentacao.png
@@ -54,13 +54,13 @@ Desenvolvimento do projeto Next Level Week, desenvolvido pela Rocketseat.
 
 ### Web Responsive Interface  para Desktop com ReactJS
 <p align="center">
-  <img src="https://raw.githubusercontent.com/shyoutarou/NLW2_Mobile/master/server/src/assets/imagens/appweb.gif" alt="Study Page in Mobile" width="100%" />
+  <img src="https://raw.githubusercontent.com/shyoutarou/NLW2_Server/master/server/src/assets/imagens/appweb.gif" alt="Study Page in Mobile" width="100%" />
 </p>
 
 ### Mobile Interface com React Native
 
 <p align="center">
-  <img src="https://raw.githubusercontent.com/shyoutarou/NLW2_Mobile/master/server/src/assets/imagens/appmobile.gif" alt="Landing Page Proffy in Mobile" width="25%" />
+  <img src="https://raw.githubusercontent.com/shyoutarou/NLW2_Server/master/server/src/assets/imagens/appmobile.gif" alt="Landing Page Proffy in Mobile" width="25%" />
 </p>
 
 <h2 align="left"> 📥 Figma layout available for download at: </h2>
