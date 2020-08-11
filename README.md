@@ -1,12 +1,11 @@
 # NLW-Next-Level-Week #2
 
 <h1 align="center">
-    <img alt="NextLevelWeek" title="#NextLevelWeek" src="src/assets/imagens/nlw2.svg" width="180px" />
+
+    <img alt="NextLevelWeek" title="#NextLevelWeek" src="https://raw.githubusercontent.com/shyoutarou/NLW2_Mobile/master/server/src/assets/imagens/nlw2.svg" width="180px" />
 </h1>
 
-<h1 align="center">
-  <img src="https://user-images.githubusercontent.com/50463866/89676315-d8742700-d8c1-11ea-8166-586d824f85c3.png" alt="Logo da Proffy" />
-</h1>
+public/apresentacao.png
 
 <h2 align="center">
   <img src="https://img.shields.io/badge/Next%20Level%20Week-%232-blue?style=for-the-badge" alt="Nome e edição do evento" />
@@ -15,6 +14,7 @@
   <img src="https://img.shields.io/badge/Mobile-OK-blue?style=for-the-badge" alt="Aplicativo mobile No" />
   <img src="https://img.shields.io/github/license/matheusfelipeog/proffy?color=blue&style=for-the-badge" alt="License" />
 </h2>
+
 ## 📌 Index
 <p align="center">
   <a href="#sobre-o-projeto"> Projeto</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
@@ -37,7 +37,7 @@ Durante o evento Next Level Week #2, foi desenvolvido a projeto Proffy, que é u
 
 O projeto está sendo desenvolvido na [Next Level Week 2](https://nextlevelweek.com/episodios/omnistack/1/edicao/2). Uma plataforma de estudos online que visa conectar alunos e professores de forma rápida e fácil.
 
-##🧐 Motivo
+## 🧐 Motivo
 
 Desenvolvimento do projeto Next Level Week, desenvolvido pela Rocketseat.
 
@@ -45,22 +45,22 @@ Desenvolvimento do projeto Next Level Week, desenvolvido pela Rocketseat.
 
 - Day 03/08: Accelerating its evolution
 - Day 04/08: Looking for opportunities
-- Day 05/08: The stack choice
+**- Day 05/08: The stack choice**
 - Day 06/08: Up to 2 years in 2 months
-- Day 07/08: Extra mile
+**- Day 05/08: The stack choice**
 
 
 ## 📸 Screenshots
 
 ### Web Responsive Interface  para Desktop com ReactJS
 <p align="center">
-  <img src="src/assets/imagens/appweb.gif" alt="Study Page in Mobile" width="100%" />
+  <img src="https://raw.githubusercontent.com/shyoutarou/NLW2_Mobile/master/server/src/assets/imagens/appweb.gif" alt="Study Page in Mobile" width="100%" />
 </p>
 
 ### Mobile Interface com React Native
 
 <p align="center">
-  <img src="src/assets/imagens/appmobile.gif" alt="Landing Page Proffy in Mobile" width="25%" />
+  <img src="https://raw.githubusercontent.com/shyoutarou/NLW2_Mobile/master/server/src/assets/imagens/appmobile.gif" alt="Landing Page Proffy in Mobile" width="25%" />
 </p>
 
 <h2 align="left"> 📥 Figma layout available for download at: </h2>
@@ -79,7 +79,7 @@ Proffy foi construído com as seguintes techs:
   - 🟢 [NodeJS](https://nodejs.org/en/)
   - [Express](http://www.reactnativeexpress.com/)
 - Package manager
-  - [Yarn](https://yarnpkg.com/)
+  -  [Yarn](https://yarnpkg.com/)
 - Server
   - ❄️[Knex](http://knexjs.org/)
 - Banco de Dados
@@ -165,7 +165,7 @@ Siga os passos abaixo para contribuir:
 
 O projeto lançado em 2020 sobre a licença [MIT](./LICENSE) ❤️ 
 
-Made with ♥ by Shyoutarou
+Made with ❤️ by Shyoutarou
 
 Gostou? Deixe uma estrelinha para ajudar o projeto ⭐
 
