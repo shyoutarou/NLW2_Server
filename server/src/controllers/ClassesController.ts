@@ -46,7 +46,7 @@ export default class ClassesController {
     async create(request: Request, response: Response){
 
         const {
-            name, avatar, whatsapp, bio,
+            name, surname, email, avatar, whatsapp, bio,
             subject, cost, schedule,
         } = request.body;
 
@@ -54,8 +54,8 @@ export default class ClassesController {
 
         try {
             const insertedIds =  await trx('users').insert({
-            name, avatar,
-            whatsapp, bio,
+            name, surname, email, avatar,
+            whatsapp, bio
             });
     
         const user_id = insertedIds[0];
@@ -85,7 +85,7 @@ export default class ClassesController {
             trx.rollback();
             // console.log(error);
             return response.status(400).json({
-            error: "Unexpected error"
+            error: "Unexpected error" 
             })
             
         }

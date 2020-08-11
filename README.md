@@ -1,7 +1,11 @@
 # NLW-Next-Level-Week #2
 
 <h1 align="center">
-    <img alt="NextLevelWeek" title="#NextLevelWeek" src="assets/nlw2.svg" width="180px" />
+    <img alt="NextLevelWeek" title="#NextLevelWeek" src="src/assets/imagens/nlw2.svg" width="180px" />
+</h1>
+
+<h1 align="center">
+  <img src="https://user-images.githubusercontent.com/50463866/89676315-d8742700-d8c1-11ea-8166-586d824f85c3.png" alt="Logo da Proffy" />
 </h1>
 
 <h2 align="center">
@@ -11,22 +15,21 @@
   <img src="https://img.shields.io/badge/Mobile-OK-blue?style=for-the-badge" alt="Aplicativo mobile No" />
   <img src="https://img.shields.io/github/license/matheusfelipeog/proffy?color=blue&style=for-the-badge" alt="License" />
 </h2>
-
-<h1 align="center">
-  <img src="https://user-images.githubusercontent.com/50463866/89676315-d8742700-d8c1-11ea-8166-586d824f85c3.png" alt="Logo da Proffy" />
-</h1>
-
 ## 📌 Index
+<p align="center">
+  <a href="#sobre-o-projeto"> Projeto</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
+  <a href="#screenshots">Screenshots</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
+  <a href="#techs">Techs</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
+  <a href="#instalação-e-start">Instalação e Start</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
+  <a href="#-contribuições">Contribuições</a> &nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
+  <a href="#-license">License</a> &nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
+    <a href="#-extra-chalenges">Extra chalenges</a> &nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
+	  <a href="#-issues">Issues</a>
+</p>
 
-- [Sobre o projeto](#-sobre-o-projeto)
-- [Screenshots](#-screenshots)
-- [Techs](#-techs)
-- [Instalação e Start](#-instalação-e-start)
-   - [Clonagem](#clonagem)
-   - [Web](#web)
-   - [Server](#server)
-- [Contribuições](#-contribuições)
-- [License](#-license)
+<p align="center">
+  <a href="https://insomnia.rest/run/?label=Proffy&uri=https%3A%2F%2Fgithub.com%2Frafacdomin%2Fproffy%2Fblob%2Fmaster%2Fapi%2FInsomnia_proffy.json" target="_blank"><img src="https://insomnia.rest/images/run.svg" alt="Run in Insomnia"></a>
+</p>
 
 ## ❔ Sobre o projeto
 
@@ -51,13 +54,13 @@ Desenvolvimento do projeto Next Level Week, desenvolvido pela Rocketseat.
 
 ### Web Responsive Interface  para Desktop com ReactJS
 <p align="center">
-  <img src="https://s3-sa-east-1.amazonaws.com/certificados.diegoguimadev.com/web.gif" alt="Study Page in Mobile" width="100%" />
+  <img src="src/assets/imagens/appweb.gif" alt="Study Page in Mobile" width="100%" />
 </p>
 
 ### Mobile Interface com React Native
 
 <p align="center">
-  <img src="https://s3-sa-east-1.amazonaws.com/certificados.diegoguimadev.com/appmenor.gif" alt="Landing Page Proffy in Mobile" width="25%" />
+  <img src="src/assets/imagens/appmobile.gif" alt="Landing Page Proffy in Mobile" width="25%" />
 </p>
 
 <h2 align="left"> 📥 Figma layout available for download at: </h2>
@@ -77,15 +80,8 @@ Proffy foi construído com as seguintes techs:
   - [Express](http://www.reactnativeexpress.com/)
 - Package manager
   - [Yarn](https://yarnpkg.com/)
-- Web
-  - ⚛️ [React](https://pt-br.reactjs.org/)
-  - 🔵[Typescript](https://www.typescriptlang.org/)
-  - 💅[Css e Html](https://www.w3.org/standards/webdesign/htmlcss)
 - Server
   - ❄️[Knex](http://knexjs.org/)
-- Mobile
-  - ⚛️ [ReactNative](https://reactnative.dev/)
-  - 🔼[Expo](https://expo.io/)
 - Banco de Dados
   - [Sqlite3](https://www.sqlite.org/index.html)
 
@@ -114,20 +110,6 @@ Back End (pasta server) Front End (pasta web) Mobile (pasta mobile)
 
 💡 Tanto o Front End quanto o Mobile precisam que o Back End esteja sendo executado para funcionar.
 
-### 💻 Executar Projeto Web
-
-```bash
-# Entra no diretório "web"
-> cd ./proffy/web
-
-# Instala todas as dependências
-> yarn install or npm install
-
-# Starta o servidor web para a plataforma Proffy
-> yarn start  or npm run start
-
-# Será startado em `http://localhost:3000`
-```
 ### 📦 Executar Server API REST
 
 ```bash
@@ -146,24 +128,7 @@ Back End (pasta server) Front End (pasta web) Mobile (pasta mobile)
 # Será startado em `http://localhost:3333`
 ```
 
-### 📱 Executar Projeto Mobile
-
-```bash
-# Go into the repository
-$ cd proffy/mobile
-
-# Install dependencies
-$ yarn install or npm install
-
-# Run
-$ yarn start or npm run start
-
-# Expo will open, just scan the qrcode on terminal or expo page
-
-# If some problem with fonts, execute:
-$ expo install expo-font @expo-google-fonts/archivo @expo-google-fonts/poppins
-```
-# Extra chalenges in App
+## Extra chalenges in App
 
 <ul>
     <li> Splash Screen </li>
