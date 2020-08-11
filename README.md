@@ -1,11 +1,8 @@
 # NLW-Next-Level-Week #2
 
 <h1 align="center">
-
-    <img alt="NextLevelWeek" title="#NextLevelWeek" src="https://raw.githubusercontent.com/shyoutarou/NLW2_Server/364a49187cb38f9d064718cc70c1f049d2719751/server/src/assets/imagens/nlw2.svg" width="180px" />
+    <img alt="NextLevelWeek" title="#NextLevelWeek" style="object-fit: cover; width:250px; height:250px;" src="server/src/assets/imagens/nlw.gif"  />
 </h1>
-
-public/apresentacao.png
 
 <h2 align="center">
   <img src="https://img.shields.io/badge/Next%20Level%20Week-%232-blue?style=for-the-badge" alt="Nome e edição do evento" />
@@ -17,10 +14,10 @@ public/apresentacao.png
 
 ## 📌 Index
 <p align="center">
-  <a href="#sobre-o-projeto"> Projeto</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
-  <a href="#screenshots">Screenshots</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
-  <a href="#techs">Techs</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
-  <a href="#instalação-e-start">Instalação e Start</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
+  <a href="#-sobre-o-projeto"> Projeto</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
+  <a href="#-screenshots">Screenshots</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
+  <a href="#-days-e-techs">Techs</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
+  <a href="#-instalação-e-start">Instalação e Start</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
   <a href="#-contribuições">Contribuições</a> &nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
   <a href="#-license">License</a> &nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
     <a href="#-extra-chalenges">Extra chalenges</a> &nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
@@ -41,14 +38,15 @@ O projeto está sendo desenvolvido na [Next Level Week 2](https://nextlevelweek.
 
 Desenvolvimento do projeto Next Level Week, desenvolvido pela Rocketseat.
 
-### Days
+### 🛠 Days e Techs
 
-- Day 03/08: Accelerating its evolution
-- Day 04/08: Looking for opportunities
-**- Day 05/08: The stack choice**
-- Day 06/08: Up to 2 years in 2 months
-**- Day 05/08: The stack choice**
-
+| Dia | Descriçao | tecnologias |
+|:---:|---------|:-----------:|
+|  03/08  |Acelerando sua evolução| ![npm](https://img.shields.io/npm/v/react?color=black&label=React&logo=react)  ![npm](https://img.shields.io/npm/v/typescript?color=black&label=Typescript&logo=typescript&logoColor=blue) |
+|  04/08  |Olhando as oportunidades| ![npm](https://img.shields.io/npm/v/express?color=black&label=Express&logo=node.js)  ![npm](https://img.shields.io/npm/v/sqlite3?color=black&label=Sqlite3&logo=sqlite&logoColor=Blue)  ![npm](https://img.shields.io/npm/v/knex?color=black&label=Knex&logo=wolfram&logoColor=orange)           |
+|  **05/08**  |**A escolha da stack**|    ![npm](https://img.shields.io/npm/v/axios?color=black&label=Axios&logo=insomnia&logoColor=purple)         |
+|  06/08  |Até 2 anos em 2 meses|   ![npm](https://img.shields.io/npm/v/react-native?color=black&label=React-Native&logo=react) ![npm](https://img.shields.io/npm/v/expo?color=black&label=Expo&logo=expo)            |
+|  **07/08**  |**A milha extra**|             |
 
 ## 📸 Screenshots
 
@@ -71,21 +69,24 @@ Desenvolvimento do projeto Next Level Week, desenvolvido pela Rocketseat.
 </a>
 </p>
 
-## 🛠 Techs
-
-Proffy foi construído com as seguintes techs:
-
-- Framework 
-  - 🟢 [NodeJS](https://nodejs.org/en/)
-  - [Express](http://www.reactnativeexpress.com/)
-- Package manager
-  -  [Yarn](https://yarnpkg.com/)
-- Server
-  - ❄️[Knex](http://knexjs.org/)
-- Banco de Dados
-  - [Sqlite3](https://www.sqlite.org/index.html)
-
 ## ⚙ Instalação e Start
+
+### Comandos para instalar no MAC
+
+| Tecnologia | Versão | Comando para instalar |
+|:----------|------|---------------------|
+|NodeJS| 12.18.2| ``` brew install node ``` |
+|Yarn  |  1.17.3 | ```npm install -g yarn``` |
+|Expo  |  3.23.1 |  ```yarn add global expo-cli```|
+
+### Comandos para instalar no Windows PowerShell
+
+| Tecnologia | Versão | Comando para instalar |
+|:----------|------|---------------------|
+|Chocolatey| 0.10.15| ```Set-ExecutionPolicy Bypass -Scope Process -Force; [System.Net.ServicePointManager]::SecurityProtocol = [System.Net.ServicePointManager]::SecurityProtocol -bor 3072; iex ((New-Object System.Net.WebClient).DownloadString('https://chocolatey.org/install.ps1')) ``` |
+|NodeJS| 12.18.2| ``` choco install nodejs ``` |
+|Yarn  |  1.17.3 | ```npm install -g yarn``` |
+|Expo  |  3.23.1 |  ```yarn add global expo-cli```|
 
 Certifique-se de que tenha o `Node.js` e um gerenciador de dependências em seu ambiente antes de seguir os passos abaixo.
 
