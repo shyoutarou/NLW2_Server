@@ -8,20 +8,22 @@
   <img src="https://img.shields.io/badge/Next%20Level%20Week-%232-blue?style=for-the-badge" alt="Nome e edição do evento" />
   <img src="https://img.shields.io/badge/web%3F-ok-blue?style=for-the-badge" alt="Sistema web Ok" />
   <img src="https://img.shields.io/badge/server%3F-ok-blue?style=for-the-badge" alt="Server Ok" />
-  <img src="https://img.shields.io/badge/Mobile-OK-blue?style=for-the-badge" alt="Aplicativo mobile No" />
+  <img src="https://img.shields.io/badge/Mobile-OK-blue?style=for-the-badge" alt="Aplicativo mobile Ok" />
   <img src="https://img.shields.io/github/license/matheusfelipeog/proffy?color=blue&style=for-the-badge" alt="License" />
 </h2>
 
 ## 📌 Index
 <p align="center">
-  <a href="#-sobre-o-projeto"> Projeto</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
+  <a href="#-sobre-o-projeto">Sobre o Projeto</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
+  <a href="#-motivo">Motivo</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
   <a href="#-screenshots">Screenshots</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
-  <a href="#-days-e-techs">Techs</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
+  <a href="#-days-e-techs">Days e Techs</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
+  <a href="#-desenvolvimento">Desenvolvimento</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
   <a href="#-instalação-e-start">Instalação e Start</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
+  <a href="#-extra-chalenges">Extra chalenges</a> &nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
+  <a href="#-issues">Issues</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
   <a href="#-contribuições">Contribuições</a> &nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
-  <a href="#-license">License</a> &nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
-    <a href="#-extra-chalenges">Extra chalenges</a> &nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
-	  <a href="#-issues">Issues</a>
+  <a href="#-license">License</a> 
 </p>
 
 <p align="center">
@@ -43,31 +45,76 @@ Desenvolvimento do projeto Next Level Week, desenvolvido pela Rocketseat.
 | Dia | Descriçao | tecnologias |
 |:---:|---------|:-----------:|
 |  03/08  |Acelerando sua evolução| ![npm](https://img.shields.io/npm/v/react?color=black&label=React&logo=react)  ![npm](https://img.shields.io/npm/v/typescript?color=black&label=Typescript&logo=typescript&logoColor=blue) |
-|  04/08  |Olhando as oportunidades| ![npm](https://img.shields.io/npm/v/express?color=black&label=Express&logo=node.js)  ![npm](https://img.shields.io/npm/v/sqlite3?color=black&label=Sqlite3&logo=sqlite&logoColor=Blue)  ![npm](https://img.shields.io/npm/v/knex?color=black&label=Knex&logo=wolfram&logoColor=orange)           |
-|  **05/08**  |**A escolha da stack**|    ![npm](https://img.shields.io/npm/v/axios?color=black&label=Axios&logo=insomnia&logoColor=purple)         |
+|  04/08  |Olhando as oportunidades| ![npm](https://img.shields.io/npm/v/express?color=black&label=Express&logo=node.js)   ![npm](https://img.shields.io/npm/v/knex?color=black&label=Knex&logo=wolfram&logoColor=orange)           |
+|  **05/08**  |**A escolha da stack**|    ![npm](https://img.shields.io/npm/v/axios?color=black&label=Axios&logo=insomnia&logoColor=purple)   ![npm](https://img.shields.io/npm/v/sqlite3?color=black&label=Sqlite3&logo=sqlite&logoColor=Blue)       |
 |  06/08  |Até 2 anos em 2 meses|   ![npm](https://img.shields.io/npm/v/react-native?color=black&label=React-Native&logo=react) ![npm](https://img.shields.io/npm/v/expo?color=black&label=Expo&logo=expo)            |
 |  **07/08**  |**A milha extra**|             |
+
+### Funcionalidades
+
+#### Aula 1: Proffy-Web
+- [ ] Criando estrutura da landing page
+- [ ] Estilizando landing page
+- [ ] Configurando navegação do app
+- [ ] Estruturando listagem de professores
+- [ ] Estilizando listagem de professores
+- [ ] Criando componentes comuns (Teacher Item)
+
+#### Aula 2: Proffy-Server
+- [ ] Identificando casos de uso
+- [ ] Configurando conexão com o banco
+- [ ] Criando tabelas no banco de dados
+- [ ] Criação de aulas
+- [ ] Listagem de aulas
+- [ ] Criação e total de coneções
+
+#### Aula 3: Finalizando Front-End
+- [x] Estruturando página de cadastro
+- [x] Estilizando página de cadastro
+- [x] Preparando cadastro de horários
+- [x] Carregando total de conexões na Landing
+- [x] Cadastro de novas aulas
+- [x] Listagem de professores
+
+#### Aula 4: Estruturando app mobile
+- [ ] Criando projeto com expo
+- [ ] Estruturando Landing Page
+- [ ] Estilizando Landing Page
+- [ ] Navegação da Landing Page
+- [ ] Página de "Dar aulas"
+- [ ] Páginas internas
+- [ ] Navegação em abas
+- [ ] Componente Page Header
+
+#### Aula 5: Finalizando app mobile
+- [x] Lista de professores
+- [x] Filtro de professores
+- [x] Conectando com a API
+  - [x] Total de conexões
+  - [x] Lista de professores
+- [x] Contato via Whatsapp
+- [x] Adicionando e removendo favoritos
+- [x] Listando favoritos
 
 ## 📸 Screenshots
 
 ### Web Responsive Interface  para Desktop com ReactJS
 <p align="center">
-  <img src="https://raw.githubusercontent.com/shyoutarou/NLW2_Server/master/server/src/assets/imagens/appweb.gif" alt="Study Page in Mobile" width="100%" />
+  <img src="server/src/assets/imagens/appweb.gif" alt="Study Page in Mobile" width="100%" />
 </p>
 
 ### Mobile Interface com React Native
 
 <p align="center">
-  <img src="https://raw.githubusercontent.com/shyoutarou/NLW2_Server/master/server/src/assets/imagens/appmobile.gif" alt="Landing Page Proffy in Mobile" width="25%" />
+  <img src="server/src/assets/imagens/appmobile.gif" alt="Landing Page Proffy in Mobile" width="25%" />
 </p>
 
 <h2 align="left"> 📥 Figma layout available for download at: </h2>
-<p align="left">
-<a title="Ir para Figma Web" alt="Ir para Figma Web" href="https://www.figma.com/file/GHGS126t7WYjnPZdRKChJF/Proffy-Web/duplicate">Figma web <svg width="150" height="64" viewBox="0 0 106 64" fill="none"><path d="M97 61V4.207a4.32 4.32 0 00-1.172-2.975A3.903 3.903 0 0093 0H13c-1.06 0-2.078.443-2.828 1.232A4.32 4.32 0 009 4.207V61h88z" fill="#8257E6"></path><path d="M0 61h106v1.5c0 .398-.385.78-1.071 1.06-.685.282-1.615.44-2.584.44H3.655c-.97 0-1.899-.158-2.584-.44C.385 63.28 0 62.899 0 62.5V61zM41.733 30.643l6.06 2.095v3.495L38 32.135v-3.029l9.793-4.098v3.483l-6.06 2.152zM51.383 39h-2.648l5.506-18H56.9l-5.517 18zM64.289 30.61l-6.027-2.107v-3.484L68 29.118v3.028l-9.738 4.099V32.76l6.027-2.152z" fill="#fff"></path></svg>
-</a>
-<a title="Ir para Figma Mobile" alt="Ir para Figma Mobile" href="https://www.figma.com/file/e33KvgUpFdunXxJjHnK7CG/Proffy-Mobile/duplicate">Figma Mobile<svg width="100" height="80" viewBox="0 0 43 80" fill="none"><path d="M38.384 80H3.838C1.718 80 0 78.115 0 75.79V4.21C0 1.886 1.718 0 3.838 0h34.546c2.12 0 3.838 1.885 3.838 4.21v71.58c0 2.325-1.718 4.21-3.838 4.21z" fill="#8257E6"></path><path d="M10 0h21.273v.273a3 3 0 01-3 3H13a3 3 0 01-3-3V0z" fill="#121214"></path><path d="M11.93 40.556l4.938 1.81v3.02l-7.98-3.541v-2.617l7.98-3.542v3.01l-4.937 1.86zM19.793 47.778h-2.157l4.486-15.556h2.166l-4.495 15.556zM30.31 40.526l-4.911-1.82v-3.01l7.934 3.541v2.618L25.4 45.397v-3.011l4.91-1.86z" fill="#fff"></path></svg>
-</a>
-</p>
+
+- [Instruções](https://whimsical.com/4Ug5pJLABvCj2NWQXyuK38)
+- [Protótipo](https://www.notion.so/Layout-Proffy-3d5f45f54ec54ef9b2103565b7cce4e1)
+- [Proffy-Web](https://www.figma.com/file/GHGS126t7WYjnPZdRKChJF/Proffy-Web)
+- [Proffy-Mobile](https://www.figma.com/file/e33KvgUpFdunXxJjHnK7CG/Proffy-Mobile)
 
 ## ⚙ Instalação e Start
 
@@ -128,17 +175,62 @@ Back End (pasta server) Front End (pasta web) Mobile (pasta mobile)
 
 # Será startado em `http://localhost:3333`
 ```
+### 💻 Executar Projeto Web
 
-## Extra chalenges in App
+```bash
+# Entra no diretório "web"
+> cd ./proffy/web
 
-<ul>
-    <li> Splash Screen </li>
-    <li> OnBoarding Screen na primeira execução</li>
-	<li> Cadastro de Senha </li>
-	<li> Login / Logout </li>
-	<li> Recuperar Senha </li>
-    <li> Horários na tela de Favoritos usando ContextApi</li>
-</ul>
+# Instala todas as dependências
+> yarn install or npm install
+
+# Starta o servidor web para a plataforma Proffy
+> yarn start  or npm run start
+
+# Será startado em `http://localhost:3000`
+```
+### 📱 Executar Projeto Mobile
+
+```bash
+# Go into the repository
+$ cd proffy/mobile
+
+# Install dependencies
+$ yarn install or npm install
+
+# Run
+$ yarn start or npm run start
+
+# Expo will open, just scan the qrcode on terminal or expo page
+
+# If some problem with fonts, execute:
+$ expo install expo-font @expo-google-fonts/archivo @expo-google-fonts/poppins
+```
+
+## Extra chalenges in App Version 2.0
+
+- [ ] Splash Screen
+- [ ] OnBoarding Screen na primeira execução
+- [ ] Infinite Scroll
+- [ ] Autenticação
+  - [ ] Login / Logout 
+  - [ ] Permanecer logado - Token
+  - [ ] Recuperar senha
+  - [ ] Web
+  - [ ] Mobile
+- [ ] Rating system
+- [ ] Manutenção de cadastro de Professor
+- [ ] Perfil do usuário
+- [ ] Horários na tela de Favoritos usando ContextApi
+- [ ] Adicionando e removendo favoritos
+- [ ] Deploy
+ 
+
+<h2 align="left"> 📥 Figma layout available for download at: </h2>
+
+- [Instruções](https://www.notion.so/Vers-o-2-0-Proffy-eefca1b981694cd0a895613bc6235970)
+- [Proffy-Web 2.0](https://www.figma.com/file/Agvethfp7FANyXDDU3LUfd/Proffy-Web-2.0)
+- [Proffy-Mobile 2.0](https://www.figma.com/file/nZ7lMEBYZSMhRxfdvy6fKz/Proffy-Mobile-2.0)
 
 ## 🐛 Issues
 
@@ -164,7 +256,7 @@ Siga os passos abaixo para contribuir:
 
 ## 📜 License
 
-O projeto lançado em 2020 sobre a licença [MIT](./LICENSE) ❤️ 
+O projeto publicado em 2020 sobre a licença [MIT](./LICENSE) ❤️ 
 
 Made with ❤️ by Shyoutarou
 

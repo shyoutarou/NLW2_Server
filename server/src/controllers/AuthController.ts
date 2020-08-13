@@ -58,7 +58,7 @@ export default class AuthController {
 
           const token = jwt.sign({ user_id: user.id }, 'shhhhh');
       
-          return response.header('auth-token', token).json({ success: true, access_token: token });
+          return response.header('auth-token', token).json({ success: true, name:  user.name, email: user.email, access_token: token });
         } catch (error) {
           // console.log(error);
           return response.status(400).json({
