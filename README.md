@@ -1,7 +1,7 @@
 # NLW-Next-Level-Week #2
 
 <h1 align="center">
-    <img alt="NextLevelWeek" title="#NextLevelWeek" style="object-fit: cover; width:250px; height:250px;" src="server/src/assets/imagens/nlw.gif"  />
+    <img alt="NextLevelWeek" title="#NextLevelWeek" style="object-fit: cover; width:250px; height:250px;" src=".github/nlw.gif"  />
 </h1>
 
 <h2 align="center">
@@ -98,19 +98,19 @@ Desenvolvimento do projeto Next Level Week, desenvolvido pela Rocketseat.
 - [x] Adicionando e removendo favoritos
 - [x] Listando favoritos
 
-[Passo-a-Passo Aula 5](Aula03.md)
+[Passo-a-Passo Aula 5](Aula05.md)
 
 ## 📸 Screenshots
 
 ### Web Responsive Interface  para Desktop com ReactJS
 <p align="center">
-  <img src="server/src/assets/imagens/appweb.gif" alt="Study Page in Mobile" width="100%" />
+  <img src=".github/appweb.gif" alt="Study Page in Mobile" width="100%" />
 </p>
 
 ### Mobile Interface com React Native
 
 <p align="center">
-  <img src="server/src/assets/imagens/appmobile.gif" alt="Landing Page Proffy in Mobile" width="25%" />
+  <img src=".github/appmobile.gif" alt="Landing Page Proffy in Mobile" width="25%" />
 </p>
 
 <h2 align="left"> 📥 Figma layout available for download at: </h2>
