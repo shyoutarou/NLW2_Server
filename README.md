@@ -16,9 +16,9 @@
 <p align="center">
   <a href="#-sobre-o-projeto">Sobre o Projeto</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
   <a href="#-motivo">Motivo</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
-  <a href="#-screenshots">Screenshots</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
   <a href="#-days-e-techs">Days e Techs</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
   <a href="#-desenvolvimento">Desenvolvimento</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
+  <a href="#-screenshots">Screenshots</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
   <a href="#-instalação-e-start">Instalação e Start</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
   <a href="#-extra-chalenges">Extra chalenges</a> &nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
   <a href="#-issues">Issues</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
@@ -76,6 +76,8 @@ Desenvolvimento do projeto Next Level Week, desenvolvido pela Rocketseat.
 - [x] Cadastro de novas aulas
 - [x] Listagem de professores
 
+[Passo-a-Passo Aula 3](Aula03.md)
+
 #### Aula 4: Estruturando app mobile
 - [ ] Criando projeto com expo
 - [ ] Estruturando Landing Page
@@ -95,6 +97,8 @@ Desenvolvimento do projeto Next Level Week, desenvolvido pela Rocketseat.
 - [x] Contato via Whatsapp
 - [x] Adicionando e removendo favoritos
 - [x] Listando favoritos
+
+[Passo-a-Passo Aula 5](Aula03.md)
 
 ## 📸 Screenshots
 
