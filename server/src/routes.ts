@@ -18,11 +18,10 @@ routes.post("/classes", classesController.create);
 routes.post('/connections', connectionsController.create);
 routes.get('/connections', connectionsController.index);
 
+routes.get('/users', authController.users);
 routes.post('/register', authController.register);
 routes.post('/login', authController.login);
 
-routes.get('/accounts', accountControllers.getToken);
-routes.get('/accounts/credentials', accountControllers.getCredentials);
-routes.post('/accounts', accountControllers.createAccount);
+
 
 export default routes;

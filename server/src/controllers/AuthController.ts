@@ -5,6 +5,13 @@ import bcrypt from 'bcryptjs';
 
 export default class AuthController {
 
+  async users(req: Request, res: Response) {
+    const users = await db('users')
+              .select('*');
+
+    return res.json(users);
+  }
+
   async register(request: Request, response: Response) {
       const {
         name,

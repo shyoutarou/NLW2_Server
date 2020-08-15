@@ -40,6 +40,16 @@ O projeto está sendo desenvolvido na [Next Level Week 2](https://nextlevelweek.
 
 Desenvolvimento do projeto Next Level Week, desenvolvido pela Rocketseat.
 
+### ***Utilitários***
+
+- Protótipo: **[Figma](https://www.figma.com/)** &rarr; **<kbd>[Protótipo (Proffy)](https://www.figma.com/file/GHGS126t7WYjnPZdRKChJF/Proffy-Web/duplicate)</kbd>**
+- Editor: **[Visual Studio Code][vscode]** &rarr; Extensions: **<kbd>[SQLite][vscode_sqlite_extension]</kbd>**
+- Markdown: **[StackEdit][stackedit]**, **<kbd>[Markdown Emoji][markdown_emoji]</kbd>**
+- Commit Conventional: **[Commitlint][commitlint]**
+- Teste de API: **[Insomnia][insomnia]**
+- Ícones: **[Feather Icons][feather_icons]**, **[Font Awesome][font_awesome]**
+- Fontes: **[Archivo][font_archivo]**, **[Poopins][font_poopins]**
+
 ### 🛠 Days e Techs
 
 | Dia | Descriçao | tecnologias |
