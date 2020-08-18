@@ -23,23 +23,27 @@ const upload = multer(multerConfig)
 routes.get('/connections', connectionsController.index);
 routes.post('/connections', connectionsController.create);
 
+routes.get('/users', usersController.listUsers)
 routes.post('/users', usersController.createUser)
+routes.delete('/users/:id', usersController.deleteUser)
 
-routes.post('/profiles', authController.loginUser)
-routes.post('/auth', auth, authController.profileAuth)
-routes.post('/profiles/resetpassword', authController.resetPassword)
+routes.post('/gerartoken', authController.gerartokenTestes)
+routes.post('/auth', authController.loginUser)
+routes.post('/profile', auth, authController.profileAuth)
+routes.post('/auth/resetpassword', authController.resetPassword)
 
-routes.put('/profiles/image/:id', upload.single('avatar'), authController.updateImage)
+routes.put('/auth/image/:id', upload.single('avatar'), authController.updateImage)
 routes.put('/profilesupdate/:id', authController.updateProfile)
-routes.put('/profiles/resetpassword/:id', authController.updatePassword)
+routes.put('/auth/resetpassword/:id', authController.updatePassword)
 
 routes.get('/classes', classesController.index)
 routes.get('/classes/:id', classesController.userClasses)
-routes.post('/classes/:id', classesController.create)
+routes.post('/classes', classesController.create)
 routes.delete('/classes/:id', classesController.deleteClass)
+routes.delete('/classesschedule/:id', classesController.deleteClassSchedule)
 
 routes.get('/favorites/:user', favoritesController.listFavorite)
-routes.post('/favorites/:user/:favorite', favoritesController.createFavorite)
+routes.post('/favorites/', favoritesController.createFavorite)
 routes.delete('/favorites/:user/:favorite', favoritesController.deleteFavorite)
 
 export default routes;

@@ -10,8 +10,6 @@ export async function up(knex: Knex) {
     table.string('bio').nullable();
     table.string('email').notNullable();
     table.string('password').notNullable();
-    table.string('subject').nullable()
-    table.integer('cost').nullable();
     table.timestamp('token_expires').nullable();
     table.string('password_token').nullable();
   });

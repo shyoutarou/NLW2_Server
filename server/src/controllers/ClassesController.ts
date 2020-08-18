@@ -11,22 +11,22 @@ interface ScheduleItem {
 
 export default class ClassesController {
 
-    async index(req: Request, res: Response) {
+    async index(requerst: Request, response: Response) {
       try {
-        const filters = req.query;
+        const filters = requerst.query;
     
         const subject = filters.subject as string;
         const week_day = filters.week_day as string;
         const time = filters.time as string;
     
         if (!filters.week_day || !filters.subject || !filters.time) {
-          return res.status(400).json({
-            error: 'Missing filters to search classes'
+          return response.status(400).json({
+            error: 'Informe o dia da semana, a matéria e o horário'
           });
         }
     
         const timeInMinutes = convertHoursToMinutes(time);
-    
+        console.log(subject)
         const classes = await db('classes')
           .whereExists(function() {
             this.select('class_schedule.*')
@@ -41,12 +41,15 @@ export default class ClassesController {
           .join('class_schedule', 'classes.id', '=', 'class_schedule.class_id')
           .select(['classes.*', 'users.*']);
     
-        return res.json(classes);        
-      } catch (error) {
-          return res.status(400).json({
-          error: "Unexpected error in list classes" 
+          console.log(classes)
+
+        return response.json(classes);    
+      }
+      catch (err) {
+          return response.status(400).json({
+              message: err.message || "Erro inesperado ao criar class" //400 Bad Request
           })
-      }      
+      }                    
     }
 
 
@@ -81,16 +84,14 @@ export default class ClassesController {
     
         await trx.commit();
 
-        return response.status(201).send('classe cadastrada')
-        
-        } catch (error) {
-                trx.rollback();
-                // console.log(error);
-                return response.status(400).json({
-                error: "Unexpected error in create class" 
-            })
-            
-        }
+        return response.status(201).send('classe cadastrada') //201 Created
+
+      }
+      catch (err) {
+          return response.status(400).json({
+              message: err.message || "Erro inesperado ao criar class" //400 Bad Request 
+          })
+      }          
     }
 
     async userClasses(request: Request, response: Response) {
@@ -100,24 +101,55 @@ export default class ClassesController {
         const classes = await db('classes').where({ user_id: id })
         .join('class_schedule', 'classes.id', '=', 'class_schedule.class_id')
 
-        response.status(201).json(classes)        
-      } catch (error) {
+        response.status(200).json(classes)  //200 OK    
+      }
+      catch (err) {
           return response.status(400).json({
-          error: "Unexpected error in list class" 
+              message: err.message || "Erro inesperado na listagem de class" //400 Bad Request
           })
-      }      
+      }                 
     }
 
     async deleteClass(request: Request, response: Response) {
       try {
         const { id } = request.params
+
+        const classe = await db('classes').where({ id: id })
+
+        if(!classe[0]) {
+           return response.status(404).send('Classe não cadastrada') //404 Not Found
+        }
+
         await db('classes').where({id}).delete()
-        response.status(201).send('classe deletada com sucesso')
-      } catch (error) {
+
+        response.status(200).send('Classe deletada com sucesso') //200 OK
+      }
+      catch (err) {
           return response.status(400).json({
-          error: "Unexpected error in delete class" 
+              message: err.message || "Erro inesperado ao excluir class" //400 Bad Request
           })
-      }    
+      }            
     }
+
+    async deleteClassSchedule(request: Request, response: Response) {
+      try {
+        const { id } = request.params
+
+        const classe = await db('class_schedule').where({ id: id })
+
+        if(!classe[0]) {
+           return response.status(404).send('Horário da classe não cadastrada') //404 Not Found
+        }
+
+        await db('class_schedule').where({id}).delete()
+
+        response.status(200).send('Horário da classe deletada com sucesso') //200 OK
+      }
+      catch (err) {
+          return response.status(400).json({
+              message: err.message || "Erro inesperado ao excluir horário" //400 Bad Request
+          })
+      }            
+    }    
 
 }

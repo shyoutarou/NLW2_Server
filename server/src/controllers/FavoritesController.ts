@@ -2,40 +2,16 @@ import { Request, Response } from 'express'
 import db from '../database/connections'
 
 export default class FavoritesController {
-    async createFavorite(req: Request, response: Response) {
-        try {
-            const { user_id, favorite_id } = req.body
-            await db('favorites').insert({
-                user_id,
-                favorite_id
-            })
-            response.status(201).send('Favoritado com sucesso!')
-        } catch (error) {
-            return response.status(400).json({
-            error: "Unexpected error in create class" 
-            })
-        }        
-    }
-
-    async deleteFavorite(request: Request, response: Response) {
-        try {
-            const { user, favorite } = request.params
-            await db('favorites').where({
-                user_id: user, favorite_id: favorite
-            }).delete()
-            response.status(201).send('Favorito excluido!')        
-        } catch (error) {
-            return response.status(400).json({
-            error: "Unexpected error in delete favorite" 
-            })
-        }        
-    }
 
     async listFavorite(request: Request, response: Response) {
         try {
             const { user_id } = request.query
+
+            if (!user_id) return response.status(400) //400 Bad Request
+            .json({ success: false, error: 'Informe o usuário' });
+
             const favorites = await db('favorites').where({ user_id })
-    
+
             if(favorites.length === 0) {
                 return response.json([])
             }  
@@ -53,11 +29,44 @@ export default class FavoritesController {
             })
     
             const users = await db('users').whereRaw(query)
-            return response.json(users)        
-        } catch (error) {
+            return response.json(users)    
+        }
+        catch (err) {
             return response.status(400).json({
-            error: "Unexpected error in create user" 
+                message: err.message || "Erro inesperado ao criar favorite" //400 Bad Request
             })
-        }        
+        }                      
     }
+
+    async createFavorite(request: Request, response: Response) {
+        try {
+            const { user_id, favorite_id } = request.body
+            await db('favorites').insert({
+                user_id,
+                favorite_id
+            })
+            response.status(201).send('Favoritado com sucesso!') //201 Created
+        }
+        catch (err) {
+            return response.status(400).json({
+                message: err.message || "Erro inesperado ao criar favorite" //400 Bad Request
+            })
+        }                    
+    }
+
+    async deleteFavorite(request: Request, response: Response) {
+        try {
+            const { user, favorite } = request.params
+            await db('favorites').where({
+                user_id: user, favorite_id: favorite
+            }).delete()
+            response.status(200).send('Favorito excluido!') //200 OK    
+        }
+        catch (err) {
+            return response.status(400).json({
+                message: err.message || "Erro inesperado ao excluir favorite" //400 Bad Request
+            })
+        }                      
+    }
+
 }

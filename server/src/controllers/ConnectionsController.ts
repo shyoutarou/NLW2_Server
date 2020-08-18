@@ -9,12 +9,13 @@ export default class ConnectionsController {
 
       const { total } = totalConnections[0];
   
-      return response.json({ total });        
-    } catch (error) {
+      return response.json({ total });     
+    }
+    catch (err) {
         return response.status(400).json({
-        error: "Unexpected error in get connections" 
+            message: err.message || "Erro inesperado ao obter connections" //400 Bad Request 
         })
-    }    
+    }              
   }
 
   async create(request: Request, response: Response) {
@@ -25,11 +26,12 @@ export default class ConnectionsController {
         user_id,
       });
   
-      return response.status(201).send();        
-    } catch (error) {
+      return response.status(201).send();  //201 Created
+    }
+    catch (err) {
         return response.status(400).json({
-        error: "Unexpected error in create connection" 
+            message: err.message || "Erro inesperado ao criar connection" //400 Bad Request
         })
-    }    
+    }                
   }
 }

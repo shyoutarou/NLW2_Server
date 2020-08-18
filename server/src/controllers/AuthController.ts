@@ -12,25 +12,23 @@ import { MailtrapMailProvider } from '../providers/implementations/MailtrapMailP
 
 export default class AuthController {
 
-  async loginUser(req: Request, res: Response) {
+  async loginUser(request: Request, response: Response) {
    
     try {
 
-      const { email, password } = req.body
+      const { email, password } = request.body
 
-      if (!email || !password) return res.status(400)
+      if (!email || !password) return response.status(400) //400 Bad Request
       .json({ success: false, error: 'Informe o email e password' });
 
-      const user = await db('users').where({
-          email
-      })
+      const user = await db('users').where({ email })
 
       if(!user[0]) {
-          return res.status(400).send('Usuário ou senha incorretos')
-      }
+            return response.status(404).send('Usuário não cadastrado') //404 Not Found
+        }
 
       if(!await bcrypt.compare(password, user[0].password)) {
-          return res.status(401).send('Usuário ou senha incorretos')
+          return response.status(401).send('Usuário ou senha incorretos') //401 Unauthorized
       }
 
       delete user[0].password
@@ -39,10 +37,12 @@ export default class AuthController {
         authConfig.jwt.key, 
         { expiresIn: authConfig.jwt.expiresIn })
 
-      return res.status(200).json({ user: user[0], token })
-
-    } catch(err) {
-        return res.status(400).json({error: "login unexpected error"})
+      return response.status(200).json({ user: user[0], token }) //200 OK
+    }
+      catch (err) {
+        return response.status(400).json({
+            message: err.message || 'Erro inesperado no Login.' //400 Bad Request
+        })
     }
   }
 
@@ -51,10 +51,11 @@ export default class AuthController {
     const { name, email } = request.body
 
     try {
-        const userAlreadyExists = await db('users').where('email', email).select('*').first()
 
-        if (!userAlreadyExists) {
-            throw new Error("User don't exists.")
+        const user = await db('users').where({ email })
+
+        if(!user[0]) {
+            return response.status(404).send('Usuário não cadastrado') //404 Not Found
         }
 
         var password = uuid()
@@ -82,38 +83,48 @@ export default class AuthController {
             body,
         })
         
-        return response.status(200).send('Email enviado a sua conta')
+        return response.status(200).send('Email enviado a sua conta') //200 OK
     }
     catch (err) {
         return response.status(400).json({
-            message: err.message || 'Unexpected error.'
+            message: err.message || 'Erro inesperado ao reiniciar password.' //400 Bad Request
         })
     }
 }
 
-  async resetPassword_old(req: Request, res: Response) {
-      const { email } = req.body
+async gerartokenTestes(request: Request, response: Response) {
+    const { email } = request.body
+
+    const user = await db('users').where({ email })
+
+    if(!user[0]) {
+        return response.status(404).send('Usuário não cadastrado') //404 Not Found
+    }
+
+    const token_expires = new Date()
+    token_expires.setHours(token_expires.getHours() + 48)
+
+    const password_token = crypto.randomBytes(16).toString('hex')
+
+    await db('users').where({ email })
+      .update({ token_expires, password_token })
+
+    return response.status(201).send('gerado token para:' + token_expires) //201 Created
+  }
+
+
+  async resetPassword_old(request: Request, response: Response) {
+      const { email } = request.body
 
       const user = await db('users').where({
           email
       })
 
       if(!user[0]) {
-          return res.status(404).send('user not found')
+        return response.status(404).send('Usuário não cadastrado') //404 Not Found
       }
 
-
-      const token_expires = new Date()
-      token_expires.setHours(token_expires.getHours() + 1)
-
       const password_token = crypto.randomBytes(16).toString('hex')
-
-      await db('users').where({
-          email
-      }).update({
-          token_expires,
-          password_token
-      })
 
       const transporter = nodemailer.createTransport({
           host: 'smtp.gmail.com',
@@ -124,7 +135,6 @@ export default class AuthController {
               pass: process.env.PASSWORD
           }
       })
-
 
       await transporter.sendMail({
           from: '"Proffy" <x_kata@hotmail.com>', // sender address
@@ -145,75 +155,92 @@ export default class AuthController {
           </div>`
       })
 
-      return res.status(200).send('token sent to your email')
+      return response.status(200).send('token sent to your email')
   }
 
-  async updatePassword(req: Request, res: Response) {
-      const { new_pass, token } = req.body
-      const { id } = req.params
+  async updatePassword(request: Request, response: Response) {
+      const { new_pass, token } = request.body
+      const { id } = request.params
 
-      const user = await db('users').where({
-          id
-      })
+      const user = await db('users').where({ id  })
 
       if(!user[0]) {
-          return res.status(404).send('user not found')
+        return response.status(404).send('Usuário não cadastrado') //404 Not Found
       }
 
       if(user[0].password_token !== token) {
-          return res.status(400).send('invalid token')
+          return response.status(401).send('Token inválido') //401 Unauthorized
       }
 
       if(user[0].token_expires < Date.now()) {
-          return res.status(400).send('token expired')
+          return response.status(401).send('Token vencido') //401 Unauthorized
       }
 
       const password = await bcrypt.hash(new_pass, 10)
 
-      await db('users').where({
-          id
-      }).update({
-          password,
-          password_token: null,
-          token_expires: null
+      await db('users').where({ id }).update({
+          password, password_token: null, token_expires: null
       })
 
-      return res.status(200).send('password updated successfully')
+      return response.status(200).send('Password alterado com sucesso') //200 OK
   }
 
-  async profileAuth(req: Request, res: Response) {
-      const user = await db('users').where({ id: req.body.userId.id })
-      return res.json(user[0])
+  async profileAuth(request: Request, response: Response) {
+    try {
+        const { user_id } = request.body
+
+        const user = await db('users').where({ id: user_id })
+        return response.json(user[0])
+    }
+    catch (err) {
+        return response.status(400).json({
+            message: err.message || 'Erro inesperado ao obter profile.' //400 Bad Request
+        })
+    }      
   }
 
-  async updateImage(req: Request, res: Response) {
-      const { id } = req.params
+  async updateImage(request: Request, response: Response) {
+    try {
+        const { id } = request.params
+ 
+        const user = await db('users').where({id})
+  
+        if(!user[0]) {
+            response.status(404).send('Usuário não cadastrado') //404 Not Found
+        }
 
-      const user = await db('users').where({id})
-
-      if(!user[0]) {
-          res.status(404).send('user not found')
-      }
-
-      await db('users').where({id}).update({
-          avatar: req.file.filename
-      })
-
-      if(user[0].avatar !== 'default.png') {
-          fs.unlinkSync(path.resolve(__dirname, '..', '..', 'uploads', user[0].avatar))
-      }
-
-      res.status(200).json({ avatar: req.file.filename })
+        await db('users').where({id}).update({
+            avatar: request.file.filename
+        })
+  
+        if(user[0].avatar !== 'default.png') {
+            fs.unlinkSync(path.resolve(__dirname, '..', '..', 'uploads', user[0].avatar))
+        }
+  
+        response.status(200).json({ avatar: request.file.filename })  //200 OK      
+    }
+    catch (err) {
+        return response.status(400).json({
+            message: err.message || 'Erro inesperado ao alterar imagem.' //400 Bad Request
+        })
+    }      
   }
 
-  async updateProfile(req: Request, res: Response) {
-      const { id } = req.params
-      const { whatsapp, bio, name, cost, subject } = req.body
-
-      await db('users').where({id}).update({
-          whatsapp, cost, name, bio, subject
-      })
-
-      return res.status(201).send('usuario atualizado com sucesso!')
+  async updateProfile(request: Request, response: Response) {
+    try {
+        const { id } = request.params
+        const { whatsapp, bio, name, cost, subject } = request.body
+  
+        await db('users').where({id}).update({
+            whatsapp, cost, name, bio, subject
+        })
+  
+        return response.status(200).send('Usuário atualizado com sucesso!') //200 OK        
+    }
+    catch (err) {
+        return response.status(400).json({
+            message: err.message || 'Erro inesperado ao alterar profile.' //400 Bad Request
+        })
+    }      
   }
 }
