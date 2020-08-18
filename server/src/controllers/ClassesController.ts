@@ -12,6 +12,7 @@ interface ScheduleItem {
 export default class ClassesController {
 
     async index(req: Request, res: Response) {
+      try {
         const filters = req.query;
     
         const subject = filters.subject as string;
@@ -37,29 +38,26 @@ export default class ClassesController {
           })
           .where('classes.subject', '=', subject)
           .join('users', 'classes.user_id', '=', 'users.id')
+          .join('class_schedule', 'classes.id', '=', 'class_schedule.class_id')
           .select(['classes.*', 'users.*']);
     
-        return res.json(classes);
-      }
+        return res.json(classes);        
+      } catch (error) {
+          return res.status(400).json({
+          error: "Unexpected error in list classes" 
+          })
+      }      
+    }
 
 
     async create(request: Request, response: Response){
 
-        const {
-            name, surname, email, avatar, whatsapp, bio,
-            subject, cost, schedule,
-        } = request.body;
+        const {subject, cost, schedule, user_id} = request.body;
 
         const trx = await db.transaction();
 
         try {
-            const insertedIds =  await trx('users').insert({
-            name, surname, email, avatar,
-            whatsapp, bio
-            });
-    
-        const user_id = insertedIds[0];
-    
+        
         const insertedclassIds = await trx('classes').insert({
             subject, cost,
             user_id
@@ -68,29 +66,58 @@ export default class ClassesController {
         const class_id = insertedclassIds[0];
     
         const classSchedule = schedule.map((scheduleitem: ScheduleItem) => {
-            return {
-                week_day: scheduleitem.week_day,
-                from: convertHoursToMinutes(scheduleitem.from),
-                to: convertHoursToMinutes(scheduleitem.to),
-                class_id
-            };
-            })
+          
+          const { week_day, from, to } = scheduleitem
+          
+          return {
+              week_day: week_day,
+              from: convertHoursToMinutes(from),
+              to: convertHoursToMinutes(to),
+              class_id
+          };
+        })
     
         await trx('class_schedule').insert(classSchedule);
     
-        trx.commit();
+        await trx.commit();
 
-        return response.status(201).send();
+        return response.status(201).send('classe cadastrada')
+        
         } catch (error) {
-            trx.rollback();
-            // console.log(error);
-            return response.status(400).json({
-            error: "Unexpected error" 
+                trx.rollback();
+                // console.log(error);
+                return response.status(400).json({
+                error: "Unexpected error in create class" 
             })
             
         }
-    
-
-        return response.send()
     }
+
+    async userClasses(request: Request, response: Response) {
+      try {
+        const { id } = request.params
+
+        const classes = await db('classes').where({ user_id: id })
+        .join('class_schedule', 'classes.id', '=', 'class_schedule.class_id')
+
+        response.status(201).json(classes)        
+      } catch (error) {
+          return response.status(400).json({
+          error: "Unexpected error in list class" 
+          })
+      }      
+    }
+
+    async deleteClass(request: Request, response: Response) {
+      try {
+        const { id } = request.params
+        await db('classes').where({id}).delete()
+        response.status(201).send('classe deletada com sucesso')
+      } catch (error) {
+          return response.status(400).json({
+          error: "Unexpected error in delete class" 
+          })
+      }    
+    }
+
 }

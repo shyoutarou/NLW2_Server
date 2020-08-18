@@ -1,16 +1,24 @@
 import jwt from 'jsonwebtoken';
 import { Request, Response, NextFunction } from 'express';
+import authConfig from '../config/auth';
 
-export default function verify (request: Request, response: Response, next: NextFunction) {
-  const token = request.header('authorization');
-
-  if (!token) return response.status(401).json({ success: false, error: 'Access denied' });
-
-  try {
-    const user_id = jwt.verify(token, process.env.JWT_SECRET || '');
-    request.user = user_id;
-    next();
-  } catch (error) {
-    response.status(400).json({ success: false, error: 'Invalid token' });
+export default (req: Request, res: Response, next: NextFunction) => {
+  if(!req.headers.authorization) {
+      return res.status(400).send('Sem token!')
   }
+
+  const token = req.headers.authorization.split(' ')
+
+  if(token[0] !== 'Bearer') {
+      return res.status(400).send('formato de token invalido!')
+  }
+
+  jwt.verify(token[1], authConfig.jwt.key, (err, decoded) => {
+      if(err) {
+          return res.status(400).send('token invalido')
+      }
+
+      req.body.userId = decoded as any
+      next()
+  })
 }
