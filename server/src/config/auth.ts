@@ -1,6 +1,6 @@
 export default {
     jwt: {
-      key: 'd54ef8c5c901b80454b0970d4f58355b',
+      key: 'eea651a651fea65fae651fa89ef4',
       expiresIn: '7d',
     },
   };

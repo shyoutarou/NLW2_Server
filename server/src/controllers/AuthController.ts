@@ -3,10 +3,12 @@ import db from '../database/connections';
 import jwt from 'jsonwebtoken';
 import bcrypt from 'bcryptjs';
 import crypto from 'crypto'
+import { uuid } from 'uuidv4'
 import nodemailer from 'nodemailer'
 import fs from 'fs'
 import path from 'path'
 import authConfig from '../config/auth';
+import { MailtrapMailProvider } from '../providers/implementations/MailtrapMailProvider';
 
 export default class AuthController {
 
@@ -44,7 +46,52 @@ export default class AuthController {
     }
   }
 
-  async resetPassword(req: Request, res: Response) {
+  async resetPassword(request: Request, response: Response) {
+
+    const { name, email } = request.body
+
+    try {
+        const userAlreadyExists = await db('users').where('email', email).select('*').first()
+
+        if (!userAlreadyExists) {
+            throw new Error("User don't exists.")
+        }
+
+        var password = uuid()
+        password = password.substr(0, 8)
+
+        const hash = await bcrypt.hash(password, 10)
+        await db('users').where('email', email).update('password', hash)
+
+        const mailProvider = new MailtrapMailProvider()
+
+        const body = `<p> Sua nova senha é: ${password} </p>`
+        console.log(password)
+        console.log(name)
+        console.log(email)
+        await mailProvider.sendMail({
+            to: {
+                name: name,
+                email: email
+            },
+            from: {
+                name: 'Equipe do meu app',
+                email: 'equipe@meuapp.com'
+            },
+            subject: 'Resetar senha da plataforma Proffy',
+            body,
+        })
+        
+        return response.status(200).send('Email enviado a sua conta')
+    }
+    catch (err) {
+        return response.status(400).json({
+            message: err.message || 'Unexpected error.'
+        })
+    }
+}
+
+  async resetPassword_old(req: Request, res: Response) {
       const { email } = req.body
 
       const user = await db('users').where({
