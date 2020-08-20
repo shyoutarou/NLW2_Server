@@ -12,12 +12,6 @@
   <img src="https://img.shields.io/github/license/matheusfelipeog/proffy?color=blue&style=for-the-badge" alt="License" />
 </h2>
 
-## 👅 Línguas
-
-- [README in English](README-EN.md)
-- [README in German/Deustch](README-DE.md)
-- [README in Japanese](README-JA.md)
-
 ## 📌 Index
 <p align="center">
   <a href="#-sobre-o-projeto">Sobre o Projeto</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
@@ -92,7 +86,7 @@ Desenvolvimento do projeto Next Level Week, desenvolvido pela Rocketseat.
 - [x] Cadastro de novas aulas
 - [x] Listagem de professores
 
-[Passo-a-Passo Aula 3](Aula03.md)
+[Passo-a-Passo Aula 3](https://github.com/shyoutarou/NLW2_Web/wiki/Aula-3-(05-08-2020):-Front-e-Back-End-Web)
 
 #### Aula 4: Estruturando app mobile
 - [ ] Criando projeto com expo
@@ -114,7 +108,7 @@ Desenvolvimento do projeto Next Level Week, desenvolvido pela Rocketseat.
 - [x] Adicionando e removendo favoritos
 - [x] Listando favoritos
 
-[Passo-a-Passo Aula 5](Aula05.md)
+[Passo-a-Passo Aula 5](https://github.com/shyoutarou/NLW2_Web/wiki/Aula-5-(07-08-2020)---Finalizando-app-mobile)
 
 ## 📸 Screenshots
 
@@ -131,8 +125,8 @@ Desenvolvimento do projeto Next Level Week, desenvolvido pela Rocketseat.
 
 <h2 align="left"> 📥 Figma layout available for download at: </h2>
 
-- [Instruções](https://whimsical.com/4Ug5pJLABvCj2NWQXyuK38)
-- [Protótipo](https://www.notion.so/Layout-Proffy-3d5f45f54ec54ef9b2103565b7cce4e1)
+- [Instruções](https://www.notion.so/Layout-Proffy-3d5f45f54ec54ef9b2103565b7cce4e1)
+- [Protótipo](https://whimsical.com/4Ug5pJLABvCj2NWQXyuK38)
 - [Proffy-Web](https://www.figma.com/file/GHGS126t7WYjnPZdRKChJF/Proffy-Web)
 - [Proffy-Mobile](https://www.figma.com/file/e33KvgUpFdunXxJjHnK7CG/Proffy-Mobile)
 
@@ -164,7 +158,7 @@ Para instalar e startar a plataforma Proffy, use `npm` ou `yarn`:
 Primeiro, clone o repositório para seu ambiente:
 
 ```bash
-> git clone https://github.com/shyoutarou/proffy.git 
+> git clone https://github.com/shyoutarou/NLW2_Server.git 
 ```
 
 Depois, entre no repositório clonado e no diretório correspondente ao que quer testar (web, server).
