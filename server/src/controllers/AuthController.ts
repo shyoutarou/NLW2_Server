@@ -48,7 +48,7 @@ export default class AuthController {
 
   async resetPassword(request: Request, response: Response) {
 
-    const { name, email } = request.body
+    const { email } = request.body
 
     try {
 
@@ -68,11 +68,11 @@ export default class AuthController {
 
         const body = `<p> Sua nova senha é: ${password} </p>`
         console.log(password)
-        console.log(name)
+        console.log(user[0].name)
         console.log(email)
         await mailProvider.sendMail({
             to: {
-                name: name,
+                name: user[0].name,
                 email: email
             },
             from: {
@@ -229,10 +229,10 @@ async gerartokenTestes(request: Request, response: Response) {
   async updateProfile(request: Request, response: Response) {
     try {
         const { id } = request.params
-        const { whatsapp, bio, name, cost, subject } = request.body
+        const { whatsapp, bio, name } = request.body
   
         await db('users').where({id}).update({
-            whatsapp, cost, name, bio, subject
+            whatsapp, name, bio
         })
   
         return response.status(200).send('Usuário atualizado com sucesso!') //200 OK        

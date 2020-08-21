@@ -30,11 +30,11 @@ routes.delete('/users/:id', usersController.deleteUser)
 routes.post('/gerartoken', authController.gerartokenTestes)
 routes.post('/auth', authController.loginUser)
 routes.post('/profile', auth, authController.profileAuth)
-routes.post('/auth/resetpassword', authController.resetPassword)
+routes.post('/resetpassword', authController.resetPassword)
 
 routes.put('/auth/image/:id', upload.single('avatar'), authController.updateImage)
 routes.put('/profilesupdate/:id', authController.updateProfile)
-routes.put('/auth/resetpassword/:id', authController.updatePassword)
+routes.put('/updatePassword/:id', authController.updatePassword)
 
 routes.get('/classes', classesController.index)
 routes.get('/classes/:id', classesController.userClasses)
@@ -42,7 +42,7 @@ routes.post('/classes', classesController.create)
 routes.delete('/classes/:id', classesController.deleteClass)
 routes.delete('/classesschedule/:id', classesController.deleteClassSchedule)
 
-routes.get('/favorites/:user', favoritesController.listFavorite)
+routes.get('/favorites/', favoritesController.listFavorite)
 routes.post('/favorites/', favoritesController.createFavorite)
 routes.delete('/favorites/:user/:favorite', favoritesController.deleteFavorite)
 
