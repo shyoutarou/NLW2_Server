@@ -11,7 +11,7 @@ import Knex from 'knex';
 function generateToken(params: any) {
 
     return jwt.sign(params, String(process.env.SECRET), {
-      expiresIn: '2m',
+      expiresIn: '20m',
     })
   }
 
