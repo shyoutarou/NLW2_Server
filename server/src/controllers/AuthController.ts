@@ -5,12 +5,97 @@ import bcrypt from 'bcryptjs';
 import crypto from 'crypto'
 import { uuid } from 'uuidv4'
 import nodemailer from 'nodemailer'
-import fs from 'fs'
-import path from 'path'
-import authConfig from '../config/auth';
 import { MailtrapMailProvider } from '../providers/implementations/MailtrapMailProvider';
+import Knex from 'knex';
+
+function generateToken(params: any) {
+
+    return jwt.sign(params, String(process.env.SECRET), {
+      expiresIn: '2m',
+    })
+  }
+
+function decodeToken(params: string): { email: string; password: string } {
+  return jwt.decode(params) as { email: string; password: string }
+}
+
+  async function indexUserByEmail(
+    email: string,
+    transaction?: Promise<Knex.Transaction<any, any>>,
+  ) {
+    // @ts-ignore
+    let trdb: Knex.QueryBuilder<TRecord, DeferredKeySelection<TRecord, never>[]>
+  
+    if (transaction) {
+      trdb = (await transaction)('users')
+    } else {
+      trdb = db.table('users')
+    }
+  
+    return trdb.select('*').where('email', email)
+  }
+ 
+  async function comparePassword(
+    password: string,
+    hash: string,
+  ): Promise<boolean> {
+    return await bcrypt.compare(password, hash)
+  }
+
+  export interface UserInterface {
+    validated?: boolean
+    validateToken?: string
+    id?: number
+    name?: string
+    surname?: string
+    avatar?: string
+    bio?: string
+    email?: string
+    whatsapp?: string
+    password?: string
+  }
+
+
 
 export default class AuthController {
+
+    async authenticate(request: Request, response: Response) {
+        let { email, password } = request.body
+        try {
+          let storedUser
+          let hashPassword
+    
+            storedUser = (await indexUserByEmail(email))[0] as UserInterface
+
+            if (!(await comparePassword(password, storedUser.password as string))) {
+                return response.status(403).json({ error: 'Senha inválida.' })
+            }
+    
+          if (!storedUser) {
+            return response.status(404).json({ error: 'Não existe esse usuário.' })
+          }
+    
+          const { name, surname, id, avatar } = storedUser
+          response.json({
+            token: generateToken({ id }),
+            refresh_token: generateToken({ email, password: storedUser.password }),
+            user: {
+              avatar,
+              name,
+              surname,
+              email,
+              id,
+            },
+          })
+        } catch (e) {
+
+          return response
+            .status(400)
+            .json({ error: 'Não foi possível executar a autenticação.' })
+        }
+}
+
+
 
   async loginUser(request: Request, response: Response) {
    
@@ -32,10 +117,10 @@ export default class AuthController {
       }
 
       delete user[0].password
-
-      const token = jwt.sign({ id: user[0].id }, 
-        authConfig.jwt.key, 
-        { expiresIn: authConfig.jwt.expiresIn })
+      const token = generateToken({ id: user[0].id })
+      // const token = jwt.sign({ id: user[0].id }, 
+      //   authConfig.jwt.key, 
+      //   { expiresIn: authConfig.jwt.expiresIn })
 
       return response.status(200).json({ user: user[0], token }) //200 OK
     }
@@ -67,9 +152,7 @@ export default class AuthController {
         const mailProvider = new MailtrapMailProvider()
 
         const body = `<p> Sua nova senha é: ${password} </p>`
-        console.log(password)
-        console.log(user[0].name)
-        console.log(email)
+
         await mailProvider.sendMail({
             to: {
                 name: user[0].name,
@@ -102,14 +185,17 @@ async gerartokenTestes(request: Request, response: Response) {
     }
 
     const token_expires = new Date()
-    token_expires.setHours(token_expires.getHours() + 48)
+    token_expires.setSeconds(token_expires.getSeconds() + 5)
+    // token_expires.setHours(token_expires.getHours() + 48)
 
-    const password_token = crypto.randomBytes(16).toString('hex')
+    const password_token = generateToken({ id: user[0].id })
+
+    // const password_token = crypto.randomBytes(16).toString('hex')
 
     await db('users').where({ email })
       .update({ token_expires, password_token })
 
-    return response.status(201).send('gerado token para:' + token_expires) //201 Created
+    return response.status(201).send('gerado token: ' + password_token + ' para:' + token_expires) //201 Created
   }
 
 
@@ -185,62 +271,4 @@ async gerartokenTestes(request: Request, response: Response) {
       return response.status(200).send('Password alterado com sucesso') //200 OK
   }
 
-  async profileAuth(request: Request, response: Response) {
-    try {
-        const { user_id } = request.body
-
-        const user = await db('users').where({ id: user_id })
-        return response.json(user[0])
-    }
-    catch (err) {
-        return response.status(400).json({
-            message: err.message || 'Erro inesperado ao obter profile.' //400 Bad Request
-        })
-    }      
-  }
-
-  async updateImage(request: Request, response: Response) {
-    try {
-        const { id } = request.params
- 
-        const user = await db('users').where({id})
-  
-        if(!user[0]) {
-            response.status(404).send('Usuário não cadastrado') //404 Not Found
-        }
-
-        await db('users').where({id}).update({
-            avatar: request.file.filename
-        })
-  
-        if(user[0].avatar !== 'default.png') {
-            fs.unlinkSync(path.resolve(__dirname, '..', '..', 'uploads', user[0].avatar))
-        }
-  
-        response.status(200).json({ avatar: request.file.filename })  //200 OK      
-    }
-    catch (err) {
-        return response.status(400).json({
-            message: err.message || 'Erro inesperado ao alterar imagem.' //400 Bad Request
-        })
-    }      
-  }
-
-  async updateProfile(request: Request, response: Response) {
-    try {
-        const { id } = request.params
-        const { whatsapp, bio, name } = request.body
-  
-        await db('users').where({id}).update({
-            whatsapp, name, bio
-        })
-  
-        return response.status(200).send('Usuário atualizado com sucesso!') //200 OK        
-    }
-    catch (err) {
-        return response.status(400).json({
-            message: err.message || 'Erro inesperado ao alterar profile.' //400 Bad Request
-        })
-    }      
-  }
 }

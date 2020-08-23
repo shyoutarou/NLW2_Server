@@ -26,7 +26,7 @@ export default class ClassesController {
         }
     
         const timeInMinutes = convertHoursToMinutes(time);
-        console.log(subject)
+
         const classes = await db('classes')
           .whereExists(function() {
             this.select('class_schedule.*')
@@ -41,7 +41,7 @@ export default class ClassesController {
           .join('class_schedule', 'classes.id', '=', 'class_schedule.class_id')
           .select(['classes.*', 'users.*']);
     
-          console.log(classes)
+
 
         return response.json(classes);    
       }
@@ -129,6 +129,38 @@ export default class ClassesController {
               message: err.message || "Erro inesperado ao excluir class" //400 Bad Request
           })
       }            
+    }
+
+    async allteachers(request: Request, response: Response) {
+      const { id } = request.params;
+  
+      const teachers = await db('classes')
+        .countDistinct('classes.user_id as total');
+  
+        const { total } = teachers[0];
+  
+        return response.status(200).json({ total });   
+    }
+
+    async showSchedules(request: Request, response: Response) {
+      const { id } = request.params;
+  
+      const classes = await db('classes')
+        .where({ user_id: id })
+        .join('class_schedule', 'classes.id', '=', 'class_schedule.class_id')
+        .select('class_schedule.id', 'classes.id as class_id', 'week_day', 'from', 'to');
+  
+      return response.status(200).json(classes);
+    }
+
+    async showSubjects(request: Request, response: Response) {
+      const { id } = request.params;
+
+      const classes = await db('classes')
+        .where({ user_id: id })
+        .select('id', 'subject as value', 'cost');
+
+      return response.status(200).json(classes);
     }
 
     async deleteClassSchedule(request: Request, response: Response) {

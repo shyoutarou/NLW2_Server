@@ -9,7 +9,7 @@ export default class ConnectionsController {
 
       const { total } = totalConnections[0];
   
-      return response.json({ total });     
+      return response.status(200).json({ total });     
     }
     catch (err) {
         return response.status(400).json({

@@ -6,9 +6,7 @@
 
 <h2 align="center">
   <img src="https://img.shields.io/badge/Next%20Level%20Week-%232-blue?style=for-the-badge" alt="Nome e edição do evento" />
-  <img src="https://img.shields.io/badge/web%3F-ok-blue?style=for-the-badge" alt="Sistema web Ok" />
-  <img src="https://img.shields.io/badge/server%3F-ok-blue?style=for-the-badge" alt="Server Ok" />
-  <img src="https://img.shields.io/badge/Mobile-OK-blue?style=for-the-badge" alt="Aplicativo mobile Ok" />
+  <img src="https://img.shields.io/badge/web%3F-ok-blue?style=for-the-badge" alt="Server Ok" />
   <img src="https://img.shields.io/github/license/matheusfelipeog/proffy?color=blue&style=for-the-badge" alt="License" />
 </h2>
 
@@ -60,55 +58,13 @@ Desenvolvimento do projeto Next Level Week, desenvolvido pela Rocketseat.
 |  06/08  |Até 2 anos em 2 meses|   ![npm](https://img.shields.io/npm/v/react-native?color=black&label=React-Native&logo=react) ![npm](https://img.shields.io/npm/v/expo?color=black&label=Expo&logo=expo)            |
 |  **07/08**  |**A milha extra**|             |
 
-### Funcionalidades
+### Funcionalidades NLW2_Web wiki!
 
-#### Aula 1: Proffy-Web
-- [ ] Criando estrutura da landing page
-- [ ] Estilizando landing page
-- [ ] Configurando navegação do app
-- [ ] Estruturando listagem de professores
-- [ ] Estilizando listagem de professores
-- [ ] Criando componentes comuns (Teacher Item)
+Resumo dos dois dias da NLW da Rocketseat que conecta a API.
 
-#### Aula 2: Proffy-Server
-- [ ] Identificando casos de uso
-- [ ] Configurando conexão com o banco
-- [ ] Criando tabelas no banco de dados
-- [ ] Criação de aulas
-- [ ] Listagem de aulas
-- [ ] Criação e total de coneções
+3. [Aula 3](https://github.com/shyoutarou/NLW2_Web/wiki/Aula-3-(05-08-2020):-Front-e-Back-End-Web)
+5. [Aula 5](https://github.com/shyoutarou/NLW2_Web/wiki/Aula-5-(07-08-2020)---Finalizando-app-mobile)
 
-#### Aula 3: Finalizando Front-End
-- [x] Estruturando página de cadastro
-- [x] Estilizando página de cadastro
-- [x] Preparando cadastro de horários
-- [x] Carregando total de conexões na Landing
-- [x] Cadastro de novas aulas
-- [x] Listagem de professores
-
-[Passo-a-Passo Aula 3](https://github.com/shyoutarou/NLW2_Web/wiki/Aula-3-(05-08-2020):-Front-e-Back-End-Web)
-
-#### Aula 4: Estruturando app mobile
-- [ ] Criando projeto com expo
-- [ ] Estruturando Landing Page
-- [ ] Estilizando Landing Page
-- [ ] Navegação da Landing Page
-- [ ] Página de "Dar aulas"
-- [ ] Páginas internas
-- [ ] Navegação em abas
-- [ ] Componente Page Header
-
-#### Aula 5: Finalizando app mobile
-- [x] Lista de professores
-- [x] Filtro de professores
-- [x] Conectando com a API
-  - [x] Total de conexões
-  - [x] Lista de professores
-- [x] Contato via Whatsapp
-- [x] Adicionando e removendo favoritos
-- [x] Listando favoritos
-
-[Passo-a-Passo Aula 5](https://github.com/shyoutarou/NLW2_Web/wiki/Aula-5-(07-08-2020)---Finalizando-app-mobile)
 
 ## 📸 Screenshots
 
@@ -223,21 +179,13 @@ $ expo install expo-font @expo-google-fonts/archivo @expo-google-fonts/poppins
 
 ## Extra chalenges in App Version 2.0
 
-- [ ] Splash Screen
-- [ ] OnBoarding Screen na primeira execução
-- [ ] Infinite Scroll
-- [ ] Autenticação
+- [x] Autenticação
   - [x] Login / Logout 
   - [x] Permanecer logado - Token
   - [x] Recuperar senha
-  - [x] Telas da Web
-  - [ ] Telas do Mobile
-- [ ] Rating system
-- [ ] Manutenção de cadastro de Professor
-- [ ] Perfil do usuário
-- [ ] Adicionar e remover os Horários no cadastro das Aulas 
-- [ ] Adicionando e removendo favoritos usando ContextApi
-- [ ] Deploy
+- [x] Manutenção de Perfil do usuário
+- [x] Adicionar e remover os Horários no cadastro das Aulas 
+- [x] Deploy
  
 
 <h2 align="left"> 📥 Figma layout available for download at: </h2>
