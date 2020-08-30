@@ -5,6 +5,20 @@ import path from 'path';
 import db from '../database/connections';
 
 export default class ProfilesController {
+
+  async profileAuth(request: Request, response: Response) {
+    try {
+        const { user_id } = request.body
+        const user = await db('users').where({ id: user_id })
+        return response.json(user[0])
+    }
+    catch (err) {
+        return response.status(400).json({
+            message: err.message || 'Erro inesperado ao obter profile.' //400 Bad Request
+        })
+    }      
+  }
+
   async update(request: Request, response: Response) {
     const { id } = request.params;
 
@@ -49,8 +63,8 @@ export default class ProfilesController {
 
     const user = await db('users').select().where({ id });
 
-    if (!user[0]) {
-      return response.status(404).json({ error: 'User not found' });
+    if(!user[0]) {
+        response.status(404).send('Usuário não cadastrado') //404 Not Found
     }
 
     await db('users').where({ id }).update({
@@ -76,18 +90,7 @@ export default class ProfilesController {
     return response.status(200).json(updatedUser[0]);
   }
 
-  async profileAuth(request: Request, response: Response) {
-    try {
-        const { user_id } = request.body
-        const user = await db('users').where({ id: user_id })
-        return response.json(user[0])
-    }
-    catch (err) {
-        return response.status(400).json({
-            message: err.message || 'Erro inesperado ao obter profile.' //400 Bad Request
-        })
-    }      
-  }
+
 
   async updateImage(request: Request, response: Response) {
     try {

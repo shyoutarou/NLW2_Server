@@ -235,8 +235,6 @@ async gerartokenTestes(request: Request, response: Response) {
           password: hashpassword, password_token: null, token_expires: null
       })
 
-      console.log("OKKKKK")
-
       return response.status(200).send('Password alterado com sucesso') //200 OK
   }
 

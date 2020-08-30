@@ -22,6 +22,21 @@ export default class UsersController {
         }                      
     }
 
+    
+    async getDataUser(request: Request, response: Response) {
+
+        const { user_id } = request.params
+    
+        const data_user = await db('users').where('users.id', user_id)
+            .join('classes', 'classes.user_id', '=', 'users.id')
+            .select('users.*', 'classes.*').first()
+        
+        data_user.password = undefined
+        data_user.avatar = `http://192.168.15.12:3333/uploads/${data_user.avatar}`
+
+        return response.json(data_user)
+    }
+    
     async createUser(request: Request, response: Response) 
     {
         try {

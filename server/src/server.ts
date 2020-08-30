@@ -3,7 +3,7 @@ import cors from 'cors';
 import routes from './routes';
 
 require('dotenv').config()
-
+console.log(require('dotenv').config())
 const app = express();
 
 app.use(cors());
