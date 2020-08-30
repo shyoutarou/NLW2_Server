@@ -29,9 +29,9 @@ const upload = multer(multerConfig)
 routes.get('/connections', connectionsController.index);
 routes.post('/connections', connectionsController.create);
 
-routes.get('/users', auth, usersController.listUsers)
-routes.post('/users', auth, usersController.createUser)
-routes.delete('/users/:id', auth, usersController.deleteUser)
+routes.get('/users', usersController.listUsers)
+routes.post('/users', usersController.createUser)
+routes.delete('/users/:id', usersController.deleteUser)
 
 
 routes.post('/authenticate', authController.authenticate)
@@ -39,8 +39,8 @@ routes.post('/authenticate', authController.authenticate)
 
 routes.post('/gerartoken', authController.gerartokenTestes)
 routes.post('/auth', authController.loginUser)
-routes.post('/resetpassword', authController.resetPassword)
-routes.put('/updatePassword/:id', authController.updatePassword)
+routes.post('/forgotPassword', authController.forgotPassword)
+routes.post('/resetPassword/:id', authController.resetPassword)
 
 routes.put('/profiles/avatar/:id', upload.single('avatar'), profilesController.updateImage)
 routes.post('/profile', auth, profilesController.profileAuth)

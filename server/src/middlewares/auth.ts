@@ -15,9 +15,7 @@ export default (request: Request, response: Response, next: NextFunction) => {
         return response.status(401).send(token[0] + 'Formato de token invalido!') //401 Unauthorized
     }
 
-    // console.log('SECRET!' + String(process.env.SECRET))
-
-    jwt.verify(token[1], String(process.env.SECRET), (err, decoded) => {
+    jwt.verify(token[1], String(process.env.SECRET_KEY), (err, decoded) => {
 
         // console.log('verify token!')
         if(err) {

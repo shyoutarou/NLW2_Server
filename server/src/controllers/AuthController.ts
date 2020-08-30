@@ -3,14 +3,13 @@ import db from '../database/connections';
 import jwt from 'jsonwebtoken';
 import bcrypt from 'bcryptjs';
 import crypto from 'crypto'
-import { uuid } from 'uuidv4'
-import nodemailer from 'nodemailer'
 import { MailtrapMailProvider } from '../providers/implementations/MailtrapMailProvider';
 import Knex from 'knex';
 
 function generateToken(params: any) {
-
-    return jwt.sign(params, String(process.env.SECRET), {
+  
+  
+    return jwt.sign(params, String(process.env.SECRET_KEY), {
       expiresIn: '20m',
     })
   }
@@ -131,7 +130,7 @@ export default class AuthController {
     }
   }
 
-  async resetPassword(request: Request, response: Response) {
+  async forgotPassword(request: Request, response: Response) {
 
     const { email } = request.body
 
@@ -143,26 +142,40 @@ export default class AuthController {
             return response.status(404).send('Usuário não cadastrado') //404 Not Found
         }
 
-        var password = uuid()
-        password = password.substr(0, 8)
+        const password_token = crypto.randomBytes(16).toString('hex')
+        const token_expires = new Date()
+        token_expires.setMinutes(token_expires.getMinutes() + 60)
 
-        const hash = await bcrypt.hash(password, 10)
-        await db('users').where('email', email).update('password', hash)
+        await db('users').where('email', email).update({
+          password_token, token_expires
+        })
 
         const mailProvider = new MailtrapMailProvider()
 
-        const body = `<p> Sua nova senha é: ${password} </p>`
-
-        await mailProvider.sendMail({
+        const body = `<div style="background-color: #8257E5; width: 500px; height: 400px;">
+                      <h1 style="color: white; font-size: 28px; text-align: center; padding: 40px;">Redefinição
+                      de senha - Proffy</h1>
+                      <h1 style="color: white; font-size: 20px; text-align: justify; padding: 0 24px;">Olá, ${user[0].name}!
+                      Foi solicitada a redefinição da sua senha na nossa plataforma! Para prosseguir, clique no
+                      botão abaixo e preencha os campos para completar o processo!</h1>
+                      <a style="text-decoration: none;" href="${String(process.env.APP_WEB_URL)}/reset-password/${user[0].id}/${password_token}">
+                          <div style="text-decoration: none; cursor: pointer; width: 197px; height: 56px; background-color: #04BF58; border-radius: 8px; margin: 0 auto;">
+                              <p style="color: white; text-align: center; line-height: 56px;">Redefinir senha</p>
+                          </div>
+                      </a>
+                      </div>`
+        
+          await mailProvider.sendMail({
             to: {
-                name: user[0].name,
-                email: email
-            },
+              name: user[0].name,
+              email: email
+            },      
             from: {
-                name: 'Equipe do meu app',
-                email: 'equipe@meuapp.com'
-            },
-            subject: 'Resetar senha da plataforma Proffy',
+              name: 'Equipe do meu app',
+              email: 'equipe@meuapp.com'
+            },          
+            subject: "Redefinição de Senha - Proffy", // Subject line
+            text: "Foi solicitada a redefinição da sua senha na nossa plataforma! Para prosseguir, entre no link a seguir e preencha os campos: ", // plain text body
             body,
         })
         
@@ -189,7 +202,7 @@ async gerartokenTestes(request: Request, response: Response) {
     // token_expires.setHours(token_expires.getHours() + 48)
 
     const password_token = generateToken({ id: user[0].id })
-
+    
     // const password_token = crypto.randomBytes(16).toString('hex')
 
     await db('users').where({ email })
@@ -198,54 +211,8 @@ async gerartokenTestes(request: Request, response: Response) {
     return response.status(201).send('gerado token: ' + password_token + ' para:' + token_expires) //201 Created
   }
 
-
-  async resetPassword_old(request: Request, response: Response) {
-      const { email } = request.body
-
-      const user = await db('users').where({
-          email
-      })
-
-      if(!user[0]) {
-        return response.status(404).send('Usuário não cadastrado') //404 Not Found
-      }
-
-      const password_token = crypto.randomBytes(16).toString('hex')
-
-      const transporter = nodemailer.createTransport({
-          host: 'smtp.gmail.com',
-          secure: false,
-          port: 587,
-          auth: {
-              user: process.env.EMAIL,
-              pass: process.env.PASSWORD
-          }
-      })
-
-      await transporter.sendMail({
-          from: '"Proffy" <x_kata@hotmail.com>', // sender address
-          to: email,
-          subject: "Redefinição de Senha - Proffy", // Subject line
-          text: "Foi solicitada a redefinição da sua senha na nossa plataforma! Para prosseguir, entre no link a seguir e preencha os campos: ", // plain text body
-          html: `<div style="background-color: #8257E5; width: 500px; height: 400px;">
-              <h1 style="color: white; font-size: 28px; text-align: center; padding: 40px;">Redefinição
-              de senha - Proffy</h1>
-              <h1 style="color: white; font-size: 20px; text-align: justify; padding: 0 24px;">Olá, ${user[0].name}!
-              Foi solicitada a redefinição da sua senha na nossa plataforma! Para prosseguir, clique no
-              botão abaixo e preencha os campos para completar o processo!</h1>
-              <a style="text-decoration: none;" href="http://localhost:3000/redefine-password/${user[0].id}/${password_token}">
-                  <div style="text-decoration: none; cursor: pointer; width: 197px; height: 56px; background-color: #04BF58; border-radius: 8px; margin: 0 auto;">
-                      <p style="color: white; text-align: center; line-height: 56px;">Redefinir senha</p>
-                  </div>
-              </a>
-          </div>`
-      })
-
-      return response.status(200).send('token sent to your email')
-  }
-
-  async updatePassword(request: Request, response: Response) {
-      const { new_pass, token } = request.body
+  async resetPassword(request: Request, response: Response) {
+      const { password, token } = request.body
       const { id } = request.params
 
       const user = await db('users').where({ id  })
@@ -262,11 +229,13 @@ async gerartokenTestes(request: Request, response: Response) {
           return response.status(401).send('Token vencido') //401 Unauthorized
       }
 
-      const password = await bcrypt.hash(new_pass, 10)
+      const hashpassword = await bcrypt.hash(password, 10)
 
       await db('users').where({ id }).update({
-          password, password_token: null, token_expires: null
+          password: hashpassword, password_token: null, token_expires: null
       })
+
+      console.log("OKKKKK")
 
       return response.status(200).send('Password alterado com sucesso') //200 OK
   }

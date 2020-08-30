@@ -36,7 +36,7 @@ export default class UsersController {
             const [emailExists] = await db('users').where('email', '=', email);
   
             if (emailExists) return response.status(400)
-            .json({ success: false, error: 'Email já cadastrado' });
+            .json({ success: false, message: 'Email já cadastrado' });
         
             const salt =  await bcrypt.genSalt(10);
             const password = await bcrypt.hash(uncryptedPass, salt)
