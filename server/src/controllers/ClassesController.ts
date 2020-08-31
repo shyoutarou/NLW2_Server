@@ -15,7 +15,7 @@ export default class ClassesController {
       try {
         const filters = requerst.query;
     
-        const subject = filters.subject as string;
+        const subject_id = filters.subject as string;
         const week_day = filters.week_day as string;
         const time = filters.time as string;
     
@@ -36,7 +36,7 @@ export default class ClassesController {
               .whereRaw('`class_schedule`.`from` <= ??', [timeInMinutes])
               .whereRaw('`class_schedule`.`to` > ??', [timeInMinutes])
           })
-          .where('classes.subject', '=', subject)
+          .where('classes.subject_id', '=', subject_id)
           .join('users', 'classes.user_id', '=', 'users.id')
           .join('class_schedule', 'classes.id', '=', 'class_schedule.class_id')
           .select(['classes.*', 'users.*']);
@@ -55,14 +55,14 @@ export default class ClassesController {
 
     async create(request: Request, response: Response){
 
-        const {subject, cost, schedule, user_id} = request.body;
+        const {subject_id, cost, summary, schedule, user_id} = request.body;
 
         const trx = await db.transaction();
 
         try {
         
         const insertedclassIds = await trx('classes').insert({
-            subject, cost,
+            subject_id, cost, summary,
             user_id
         });
     
@@ -158,7 +158,8 @@ export default class ClassesController {
 
       const classes = await db('classes')
         .where({ user_id: id })
-        .select('id', 'subject as value', 'cost');
+        .join('subjects', 'classes.subject_id', '=', 'subjects.id')
+        .select('classes.id', 'subjects.nome as value', 'classes.cost');
 
       return response.status(200).json(classes);
     }

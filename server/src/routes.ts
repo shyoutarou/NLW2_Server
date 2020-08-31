@@ -9,6 +9,7 @@ import multer from 'multer';
 import multerConfig from './config/multerConfig'
 import auth from './middlewares/auth'
 import ProfilesController from './controllers/ProfilesController';
+import SubjectsController from './controllers/SubjectsController';
 
 const routes = express.Router();
 
@@ -17,6 +18,8 @@ const connectionsController = new ConnectionsController();
 
 const usersController = new UsersController();
 const authController = new AuthController();
+
+const subjectsController = new SubjectsController();
 
 const profilesController = new ProfilesController();
 
@@ -33,6 +36,7 @@ routes.get('/users', usersController.listUsers)
 routes.post('/users', usersController.createUser)
 routes.delete('/users/:id', usersController.deleteUser)
 
+routes.get('/subjects', subjectsController.listSubjects)
 
 routes.post('/authenticate', authController.authenticate)
 
@@ -49,9 +53,9 @@ routes.put('/profilesupdate/:id', auth, profilesController.updateProfile)
 routes.get('/classes', auth, classesController.index)
 routes.get('/classes/:id', auth, classesController.userClasses)
 routes.post('/classes', auth, classesController.create)
-routes.get('/allteachers', auth, classesController.allteachers)
-routes.get('/showSubjects/:id', auth, classesController.showSubjects)
-routes.get('/showSchedules/:id', auth, classesController.showSchedules)
+routes.get('/allteachers', classesController.allteachers)
+routes.get('/showSubjects/:id', classesController.showSubjects)
+routes.get('/showSchedules/:id', classesController.showSchedules)
 routes.delete('/classes/:id', auth, classesController.deleteClass)
 routes.delete('/classesschedule/:id', auth, classesController.deleteClassSchedule)
 

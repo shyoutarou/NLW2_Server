@@ -17,7 +17,7 @@ export default class UsersController {
         }
         catch (err) {
             return response.status(400).json({
-                message: err.message || "Erro inesperado ao criar favorite" //400 Bad Request
+                message: err.message || "Erro inesperado ao listar usuários" //400 Bad Request
             })
         }                      
     }
@@ -32,7 +32,7 @@ export default class UsersController {
             .select('users.*', 'classes.*').first()
         
         data_user.password = undefined
-        data_user.avatar = `http://192.168.15.12:3333/uploads/${data_user.avatar}`
+        data_user.avatar = `${String(process.env.APP_API_URL)}/uploads/${data_user.avatar}`
 
         return response.json(data_user)
     }

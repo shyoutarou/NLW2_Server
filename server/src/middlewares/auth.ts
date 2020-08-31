@@ -3,8 +3,6 @@ import { Request, Response, NextFunction } from 'express';
 
 export default (request: Request, response: Response, next: NextFunction) => {
     
-
-    
     if(!request.headers.authorization) {
         return response.status(401).send('Sem token!') //401 Unauthorized
     }
@@ -17,11 +15,7 @@ export default (request: Request, response: Response, next: NextFunction) => {
 
     jwt.verify(token[1], String(process.env.SECRET_KEY), (err, decoded) => {
 
-        // console.log('verify token!')
         if(err) {
-
-            // console.log('verify!' + err)
-
           return response.status(401).json({
               message: err.message || "Token invalido" //401 Unauthorized
           })          

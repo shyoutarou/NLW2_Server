@@ -6,17 +6,17 @@ import crypto from 'crypto'
 import { MailtrapMailProvider } from '../providers/implementations/MailtrapMailProvider';
 import Knex from 'knex';
 
-function generateToken(params: any) {
-  
-  
-    return jwt.sign(params, String(process.env.SECRET_KEY), {
-      expiresIn: '20m',
-    })
-  }
+  function generateToken(params: any) {
+    
+    
+      return jwt.sign(params, String(process.env.SECRET_KEY), {
+        expiresIn: '20m',
+      })
+    }
 
-function decodeToken(params: string): { email: string; password: string } {
-  return jwt.decode(params) as { email: string; password: string }
-}
+  function decodeToken(params: string): { email: string; password: string } {
+    return jwt.decode(params) as { email: string; password: string }
+  }
 
   async function indexUserByEmail(
     email: string,
