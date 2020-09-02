@@ -103,7 +103,7 @@ export default class ProfilesController {
         }
 
         await db('users').where({id}).update({
-            avatar: request.file.filename
+            avatar: process.env.APP_API_URL + "/uploads/" + request.file.filename
         })
   
         if(user[0].avatar !== 'default.png') {

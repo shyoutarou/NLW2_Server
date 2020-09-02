@@ -1,11 +1,12 @@
 import express from 'express';
-
+import { Request, Response } from 'express'
 import AuthController from './controllers/AuthController';
 import ClassesController from './controllers/ClassesController';
 import ConnectionsController from './controllers/ConnectionsController';
 import FavoritesController from './controllers/FavoritesController';
 import UsersController from './controllers/UsersController';
 import multer from 'multer';
+import path from 'path'
 import multerConfig from './config/multerConfig'
 import auth from './middlewares/auth'
 import ProfilesController from './controllers/ProfilesController';
@@ -31,6 +32,10 @@ const upload = multer(multerConfig)
 
 routes.get('/connections', connectionsController.index);
 routes.post('/connections', connectionsController.create);
+
+routes.get('/uploads/:img', (request: Request, response: Response) => {
+    return response.sendFile(path.resolve(__dirname, '..', 'uploads', request.params.img))
+})
 
 routes.get('/users', usersController.listUsers)
 routes.post('/users', usersController.createUser)

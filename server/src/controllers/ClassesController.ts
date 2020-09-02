@@ -1,12 +1,41 @@
 import { Request, Response } from 'express';
 
 import db from '../database/connections';
-import { convertHoursToMinutes } from '../utils/convertHourtToMinuts';
+import { convertHoursToMinutes, convertMinutesToHours } from '../utils/convertHourtToMinuts';
 
 interface ScheduleItem {
     week_day: number;
     from: string;
     to: string;
+  }
+
+  export async function getSchedulesfromClasses(classes: any, time: string) {
+    for (let classItem in classes) {
+      const { user_id, name, surname, avatar, whatsapp, bio,
+         id, subject_id, cost, summary,
+      } = classes[classItem]
+
+      const schedules = await db('classes')
+      .where({ user_id: id, subject_id: subject_id  })
+      .join('class_schedule', 'classes.id', '=', 'class_schedule.class_id')
+      .where('class_schedule.from', '<=', time? convertHoursToMinutes(time)  :  1440)
+      .where('class_schedule.to', '>', time?  convertHoursToMinutes(time)  : 0)
+      .select('class_schedule.id', 'classes.id as class_id', 'week_day', 'from', 'to');
+
+      classes[classItem] = {
+        id, summary, cost, subject_id,
+        user_id, name, surname, avatar, whatsapp, bio,
+        schedules: schedules.map(({ id, week_day, from, to }) => {
+          return {
+            id,
+            week_day,
+            from: convertMinutesToHours(from),
+            to: convertMinutesToHours(to),
+          }
+        }),
+      }
+    }
+    return classes;
   }
 
 export default class ClassesController {
@@ -19,38 +48,52 @@ export default class ClassesController {
         const week_day = filters.week_day as string;
         const time = filters.time as string;
     
-        if (!filters.week_day || !filters.subject || !filters.time) {
+        if (!filters.week_day || !filters.subject ) {
           return response.status(400).json({
             error: 'Informe o dia da semana, a matéria e o horário'
           });
         }
     
-        const timeInMinutes = convertHoursToMinutes(time);
-
-        const classes = await db('classes')
+        let classes = await db('classes')
           .whereExists(function() {
+            
             this.select('class_schedule.*')
               .from('class_schedule')
               .whereRaw('`class_schedule`.`class_id` = `classes`.`id`')
               .whereRaw('`class_schedule`.`week_day` = ??', [Number(week_day)])
-              .whereRaw('`class_schedule`.`from` <= ??', [timeInMinutes])
-              .whereRaw('`class_schedule`.`to` > ??', [timeInMinutes])
+
+            if (time) {
+                const timeInMinutes = convertHoursToMinutes(time);
+                this.whereRaw('`class_schedule`.`from` <= ??', [timeInMinutes])
+                    .whereRaw('`class_schedule`.`to` > ??', [timeInMinutes])
+            }
           })
           .where('classes.subject_id', '=', subject_id)
           .join('users', 'classes.user_id', '=', 'users.id')
-          .join('class_schedule', 'classes.id', '=', 'class_schedule.class_id')
           .select(['classes.*', 'users.*']);
-    
 
+        classes = await getSchedulesfromClasses(classes, time)
 
         return response.json(classes);    
       }
       catch (err) {
           return response.status(400).json({
-              message: err.message || "Erro inesperado ao criar class" //400 Bad Request
+              message: err.message || "Erro inesperado ao listar class" //400 Bad Request
           })
       }                    
     }
+
+    async showSchedules(request: Request, response: Response) {
+      const { id } = request.params;
+  
+      const schedules = await db('classes')
+        .where({ user_id: id })
+        .join('class_schedule', 'classes.id', '=', 'class_schedule.class_id')
+        .select('class_schedule.id', 'classes.subject_id as subject_id', 'classes.id as class_id', 'week_day', 'from', 'to');
+  
+      return response.status(200).json(schedules);
+    }
+
 
 
     async create(request: Request, response: Response){
@@ -99,6 +142,7 @@ export default class ClassesController {
         const { id } = request.params
 
         const classes = await db('classes').where({ user_id: id })
+        .join('subjects', 'classes.subject_id', '=', 'subjects.id')
         .join('class_schedule', 'classes.id', '=', 'class_schedule.class_id')
 
         response.status(200).json(classes)  //200 OK    
@@ -142,24 +186,13 @@ export default class ClassesController {
         return response.status(200).json({ total });   
     }
 
-    async showSchedules(request: Request, response: Response) {
-      const { id } = request.params;
-  
-      const classes = await db('classes')
-        .where({ user_id: id })
-        .join('class_schedule', 'classes.id', '=', 'class_schedule.class_id')
-        .select('class_schedule.id', 'classes.id as class_id', 'week_day', 'from', 'to');
-  
-      return response.status(200).json(classes);
-    }
-
     async showSubjects(request: Request, response: Response) {
       const { id } = request.params;
 
       const classes = await db('classes')
         .where({ user_id: id })
         .join('subjects', 'classes.subject_id', '=', 'subjects.id')
-        .select('classes.id', 'subjects.nome as value', 'classes.cost');
+        .select('subjects.id', 'subjects.nome as value', 'classes.cost');
 
       return response.status(200).json(classes);
     }
