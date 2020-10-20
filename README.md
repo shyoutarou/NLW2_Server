@@ -1,30 +1,29 @@
-# NLW-Next-Level-Week #2
+# NLW-Next-Level-Week #2 - Server
 
 
 <details>
  <summary>Videos Youtube</summary>
 
-
 1. NWL#1 - Ecoleta
-[NWL#1 Aula 1](https://www.youtube.com/watch?v=4H0CBnLfCQE)
-[NWL#1 Aula 2](https://www.youtube.com/watch?v=RDHDUOLxI20)
-[NWL#1 Aula 3](https://www.youtube.com/watch?v=rlxdnIsB4RQ)
-[NWL#1 Aula 4](https://www.youtube.com/watch?v=VMycI3_KeHs)
-[NWL#1 Aula 5](https://www.youtube.com/watch?v=UHy7ZZfBg80)
+- [NWL#1 Aula 1](https://www.youtube.com/watch?v=4H0CBnLfCQE)
+- [NWL#1 Aula 2](https://www.youtube.com/watch?v=RDHDUOLxI20)
+- [NWL#1 Aula 3](https://www.youtube.com/watch?v=rlxdnIsB4RQ)
+- [NWL#1 Aula 4](https://www.youtube.com/watch?v=VMycI3_KeHs)
+- [NWL#1 Aula 5](https://www.youtube.com/watch?v=UHy7ZZfBg80)
 
-1. Trilha Discovery
-[Trilha Discovery Aula 1](https://www.youtube.com/watch?v=PQ-F5N3CiXk)
-[Trilha Discovery Aula 2](https://www.youtube.com/watch?v=XDQelpd5CZ8)
-[Trilha Discovery Aula 3](https://www.youtube.com/watch?v=XeMqsRjZoDw)
-[Trilha Discovery Aula 4](https://www.youtube.com/watch?v=_sZzCcf87j0)
-[Trilha Discovery Aula 5](https://www.youtube.com/watch?v=wey26PDl2f8)
+1. NWL#2 - Trilha Discovery
+- [Trilha Discovery Aula 1](https://www.youtube.com/watch?v=PQ-F5N3CiXk)
+- [Trilha Discovery Aula 2](https://www.youtube.com/watch?v=XDQelpd5CZ8)
+- [Trilha Discovery Aula 3](https://www.youtube.com/watch?v=XeMqsRjZoDw)
+- [Trilha Discovery Aula 4](https://www.youtube.com/watch?v=_sZzCcf87j0)
+- [Trilha Discovery Aula 5](https://www.youtube.com/watch?v=wey26PDl2f8)
 
-2. Trilha OmniStack
-[Trilha OmniStack Aula 1](https://www.youtube.com/watch?v=AC7fGkJRYNw)
-[Trilha OmniStack Aula 2](https://www.youtube.com/watch?v=TjUO72eAtog)
-[Trilha OmniStack Aula 3](https://www.youtube.com/watch?v=ytVJxv0OPEA)
-[Trilha OmniStack Aula 4](https://www.youtube.com/watch?v=_sZzCcf87j0)
-[Trilha OmniStack Aula 5](https://www.youtube.com/watch?v=EvRAXJuQrFE)
+2. NWL#2 - Trilha OmniStack
+- [Trilha OmniStack Aula 1](https://www.youtube.com/watch?v=AC7fGkJRYNw)
+- [Trilha OmniStack Aula 2](https://www.youtube.com/watch?v=TjUO72eAtog)
+- [Trilha OmniStack Aula 3](https://www.youtube.com/watch?v=ytVJxv0OPEA)
+- [Trilha OmniStack Aula 4](https://www.youtube.com/watch?v=_sZzCcf87j0)
+- [Trilha OmniStack Aula 5](https://www.youtube.com/watch?v=EvRAXJuQrFE)
 
 
 </details>
@@ -48,18 +47,31 @@
 </h2>
 
 ## 📌 Index
-<p align="center">
-  <a href="#-sobre-o-projeto">Sobre o Projeto</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
-  <a href="#-motivo">Motivo</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
-  <a href="#-days-e-techs">Days e Techs</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
-  <a href="#-desenvolvimento">Desenvolvimento</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
-  <a href="#-screenshots">Screenshots</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
-  <a href="#-instalação-e-start">Instalação e Start</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
-  <a href="#-extra-chalenges">Extra chalenges</a> &nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
-  <a href="#-issues">Issues</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
-  <a href="#-contribuições">Contribuições</a> &nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
-  <a href="#-license">License</a> 
-</p>
+
+- [NLW-Next-Level-Week #2 - Server](#nlw-next-level-week-2---server)
+  - [📌 Index](#-index)
+  - [❔ Sobre o projeto](#-sobre-o-projeto)
+  - [🧐 Motivo](#-motivo)
+  - [THE EXTRAMILE - Proffy 2.0](#the-extramile---proffy-20)
+  - [📸 Screenshots](#-screenshots)
+    - [Web Responsive Interface  para Desktop com ReactJS](#web-responsive-interface-para-desktop-com-reactjs)
+    - [Mobile Interface com React Native](#mobile-interface-com-react-native)
+    - [***Utilitários***](#utilitários)
+    - [🛠 Days e Techs](#-days-e-techs)
+    - [Desenvolvimento NLW2_Web wiki!](#desenvolvimento-nlw2_web-wiki)
+  - [⚙ Instalação e Start](#-instalação-e-start)
+    - [Comandos para instalar no MAC](#comandos-para-instalar-no-mac)
+    - [Comandos para instalar no Windows PowerShell](#comandos-para-instalar-no-windows-powershell)
+    - [Clonagem](#clonagem)
+    - [Como executar o projeto](#como-executar-o-projeto)
+    - [📦 Executar Server API REST](#-executar-server-api-rest)
+    - [💻 Executar Projeto Web](#-executar-projeto-web)
+    - [📱 Executar Projeto Mobile](#-executar-projeto-mobile)
+  - [🐛 Issues](#-issues)
+  - [🤝 Contribuições](#-contribuições)
+  - [***:star2: AGRADECIMENTOS***](#star2-agradecimentos)
+  - [***:books: REFERÊNCIAS***](#books-referências)
+  - [📜 License](#-license)
 
 <p align="center">
   <a href="https://insomnia.rest/run/?label=Proffy&uri=https%3A%2F%2Fgithub.com%2Frafacdomin%2Fproffy%2Fblob%2Fmaster%2Fapi%2FInsomnia_proffy.json" target="_blank"><img src="https://insomnia.rest/images/run.svg" alt="Run in Insomnia"></a>
@@ -71,9 +83,44 @@ Durante o evento Next Level Week #2, foi desenvolvido a projeto Proffy, que é u
 
 O projeto está sendo desenvolvido na [Next Level Week 2](https://nextlevelweek.com/episodios/omnistack/1/edicao/2). Uma plataforma de estudos online que visa conectar alunos e professores de forma rápida e fácil.
 
+Este projeto é uma parte de uma trilogia: 
+- [NLW2_Server](https://github.com/shyoutarou/NLW2_Server)
+- [NLW2_Web](https://github.com/shyoutarou/NLW2_Web)
+- [NLW2_Mobile](https://github.com/shyoutarou/NLW2_Mobile)
+
 ## 🧐 Motivo
 
-Desenvolvimento do projeto Next Level Week, desenvolvido pela Rocketseat.
+Desenvolvimento apartir do projeto [Next Level Week 2](https://github.com/shyoutarou/NLW-Next-Level-Week-2), visa atender os Desafios lançados no final na semana NLW#2, desenvolvido pela [Rocketseat](https://rocketseat.com.br/).
+  
+## THE EXTRAMILE - Proffy 2.0
+
+<h2 align="left"> 📥 Figma layout available for download at: </h2>
+
+- [Instruções](https://www.notion.so/Layout-Proffy-3d5f45f54ec54ef9b2103565b7cce4e1)
+- [Protótipo](https://whimsical.com/4Ug5pJLABvCj2NWQXyuK38)
+- [Proffy-Web](https://www.figma.com/file/GHGS126t7WYjnPZdRKChJF/Proffy-Web)
+- [Proffy-Mobile](https://www.figma.com/file/e33KvgUpFdunXxJjHnK7CG/Proffy-Mobile)
+
+- [x] Autenticação
+  - [x] Login / Logout 
+  - [x] Permanecer logado - Token
+  - [x] Recuperar senha
+- [x] Manutenção de Perfil do usuário
+- [x] Adicionar e remover os Horários no cadastro das Aulas 
+- [ ] Deploy
+
+## 📸 Screenshots
+
+### Web Responsive Interface  para Desktop com ReactJS
+<p align="center">
+  <img src=".github/appweb.gif" alt="Study Page in Mobile" width="100%" />
+</p>
+
+### Mobile Interface com React Native
+
+<p align="center">
+  <img src=".github/appmobile.gif" alt="Landing Page Proffy in Mobile" width="25%" />
+</p>
 
 ### ***Utilitários***
 
@@ -95,33 +142,13 @@ Desenvolvimento do projeto Next Level Week, desenvolvido pela Rocketseat.
 |  06/08  |Até 2 anos em 2 meses|   ![npm](https://img.shields.io/npm/v/react-native?color=black&label=React-Native&logo=react) ![npm](https://img.shields.io/npm/v/expo?color=black&label=Expo&logo=expo)            |
 |  **07/08**  |**A milha extra**|             |
 
-### Funcionalidades NLW2_Web wiki!
+### Desenvolvimento NLW2_Web wiki!
 
 Resumo dos dois dias da NLW da Rocketseat que conecta a API.
 
 3. [Aula 3](https://github.com/shyoutarou/NLW2_Web/wiki/Aula-3-(05-08-2020):-Front-e-Back-End-Web)
 5. [Aula 5](https://github.com/shyoutarou/NLW2_Web/wiki/Aula-5-(07-08-2020)---Finalizando-app-mobile)
 
-
-## 📸 Screenshots
-
-### Web Responsive Interface  para Desktop com ReactJS
-<p align="center">
-  <img src=".github/appweb.gif" alt="Study Page in Mobile" width="100%" />
-</p>
-
-### Mobile Interface com React Native
-
-<p align="center">
-  <img src=".github/appmobile.gif" alt="Landing Page Proffy in Mobile" width="25%" />
-</p>
-
-<h2 align="left"> 📥 Figma layout available for download at: </h2>
-
-- [Instruções](https://www.notion.so/Layout-Proffy-3d5f45f54ec54ef9b2103565b7cce4e1)
-- [Protótipo](https://whimsical.com/4Ug5pJLABvCj2NWQXyuK38)
-- [Proffy-Web](https://www.figma.com/file/GHGS126t7WYjnPZdRKChJF/Proffy-Web)
-- [Proffy-Mobile](https://www.figma.com/file/e33KvgUpFdunXxJjHnK7CG/Proffy-Mobile)
 
 ## ⚙ Instalação e Start
 
@@ -169,7 +196,7 @@ Back End (pasta server) Front End (pasta web) Mobile (pasta mobile)
 
 ```bash
 # Entra no diretório "server"
-> cd ./proffy/server
+> cd ./server
 
 # Instala todas as dependências
 > yarn install or npm install
@@ -186,7 +213,7 @@ Back End (pasta server) Front End (pasta web) Mobile (pasta mobile)
 
 ```bash
 # Entra no diretório "web"
-> cd ./proffy/web
+> cd ./web
 
 # Instala todas as dependências
 > yarn install or npm install
@@ -200,7 +227,7 @@ Back End (pasta server) Front End (pasta web) Mobile (pasta mobile)
 
 ```bash
 # Go into the repository
-$ cd proffy/mobile
+$ cd ./mobile
 
 # Install dependencies
 $ yarn install or npm install
@@ -213,17 +240,6 @@ $ yarn start or npm run start
 # If some problem with fonts, execute:
 $ expo install expo-font @expo-google-fonts/archivo @expo-google-fonts/poppins
 ```
-
-## Extra chalenges in App Version 2.0
-
-- [x] Autenticação
-  - [x] Login / Logout 
-  - [x] Permanecer logado - Token
-  - [x] Recuperar senha
-- [x] Manutenção de Perfil do usuário
-- [x] Adicionar e remover os Horários no cadastro das Aulas 
-- [x] Deploy
- 
 
 <h2 align="left"> 📥 Figma layout available for download at: </h2>
 

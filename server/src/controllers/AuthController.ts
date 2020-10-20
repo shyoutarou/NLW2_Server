@@ -3,8 +3,8 @@ import db from '../database/connections';
 import jwt from 'jsonwebtoken';
 import bcrypt from 'bcryptjs';
 import crypto from 'crypto'
-import { MailtrapMailProvider } from '../providers/implementations/MailtrapMailProvider';
 import Knex from 'knex';
+import { MailtrapMailProvider } from '../providers/implementations/MailtrapMailProvider';
 
   function generateToken(params: any) {
     
